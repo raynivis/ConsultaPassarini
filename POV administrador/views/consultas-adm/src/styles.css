@@ -2,7 +2,11 @@
     color: #3f9f9f;
 }
 
-.text-palette:hover{
+li .text-palette:hover{
     background-color: #3f9f9f;
     color: white;}
 
+.table-rolagem {
+    max-height: 300px;
+    overflow-y: auto;
+}
