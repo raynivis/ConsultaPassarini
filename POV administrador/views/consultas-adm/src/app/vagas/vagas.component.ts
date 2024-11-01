@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-vagas',
   standalone: true,
   imports: [HeaderComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './vagas.component.html',
+  styleUrl: './vagas.component.css'
 })
-export class HomeComponent {
+export class VagasComponent {
 
 }
