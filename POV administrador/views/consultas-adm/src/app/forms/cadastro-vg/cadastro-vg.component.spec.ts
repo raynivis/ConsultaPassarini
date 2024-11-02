@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PerfilComponent } from './perfil.component';
+import { CadastroVgComponent } from './cadastro-vg.component';
 
-describe('PerfilComponent', () => {
-  let component: PerfilComponent;
-  let fixture: ComponentFixture<PerfilComponent>;
+
+describe('CadastroVgComponent', () => {
+  let component: CadastroVgComponent;
+  let fixture: ComponentFixture<CadastroVgComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PerfilComponent]
+      imports: [CadastroVgComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PerfilComponent);
+    fixture = TestBed.createComponent(CadastroVgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
