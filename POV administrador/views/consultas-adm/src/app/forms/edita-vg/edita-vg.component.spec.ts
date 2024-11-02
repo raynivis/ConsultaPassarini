@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PerfilComponent } from './perfil.component';
 
-describe('PerfilComponent', () => {
-  let component: PerfilComponent;
-  let fixture: ComponentFixture<PerfilComponent>;
+import { EditaVgComponent } from './edita-vg.component';
+
+describe('EditaVgComponent', () => {
+  let component: EditaVgComponent;
+  let fixture: ComponentFixture<EditaVgComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PerfilComponent]
+      imports: [EditaVgComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PerfilComponent);
+    fixture = TestBed.createComponent(EditaVgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

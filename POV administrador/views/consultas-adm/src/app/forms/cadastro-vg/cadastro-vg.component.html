@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<div class="row g-5 m-3">
+    <div class="col-md-8">
+        <section class="intro">
+            <div class="bg-image-vertical h-100">
+              <div class="mask d-flex align-items-center h-100">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10">
+                      <div class="card" style="border-radius: 1rem;">
+                        <div class="card-body p-5">
+          
+                          <h4 class="mb-5 text-center text-palette">Cadastro de Consulta</h4>
+          
+                          <form>
+                        
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <select class="form-select" aria-label="Default select example" id="consulta" formControlName="tipoConsulta">
+                                    <option value="normal">Normal</option>
+                                    <option value="primeiraConsulta">Primeira Consulta</option>
+                                    <option value="remota">Remota</option>
+                                    <option value="retorno">Retorno</option>
+                                    <option value="tratamentoTraumas">Tratamento de Traumas</option>
+                                </select>
+                              <br/>
+                              <label class="form-label" for="form6Example3">Tipo de Consulta</label>
+                            </div>
+          
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                              <input type="number" id="form6Example5" class="form-control"  />
+                              <label class="form-label" for="form6Example5">Preço</label>
+                            </div>
+          
+                            <!-- Telefone input -->
+                            <div class="form-outline mb-4">
+                              <input type="datetime-local" id="form6Example6" class="form-control" />
+                              <label class="form-label" for="form6Example6">Data</label>
+                            </div>
+                                    
+                          </form>
+                            <!-- Submit button -->
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-outline-success btn-rounded btn-block">Cadastrar</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>    
+    </div>
+
+    <div class="col-md-4">
+        
+        <!-- parte da lateral direita -->
+        <div class="card shadow mb-4 table-rolagem">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-palette">Notificações</h6>
+            </div>
+            <div class="table-rolagem">
+                <table class="table table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
+                    aria-describedby="dataTable_info" style="width: 100%;">
+                    <tbody>
+                        <tr class="odd ">
+                            <td class="sorting_1">Nenhuma notificação!</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+<app-header></app-header>
+
+
+<div class="row g-5 m-3">
+    <div class="col-md-8">
+
+        <article class="blog-post">
+        
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-palette">Últimas Consultas Cadastradas</h6>
+                </div>
+                <div class="table-rolagem">
+                    <table class="table table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
+                        aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Name: activate to sort column descending" style="width: 57px;">Nome</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Position: activate to sort column ascending" style="width: 61px;">Consultorio
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Office: activate to sort column ascending" style="width: 49px;">
+                                    Data
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Age: activate to sort column ascending" style="width: 31px;"></th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Start date: activate to sort column ascending" style="width: 68px;">
+                                    Relatorio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td class="sorting_1">Airi Satou</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>
+                                    <a href="/editarvagas">
+                                        <button type="button" class="btn" style="background-color: #3f9f9f; color: #ffffff;">Editar Consulta</button>
+                                    </a>
+                                </td>
+                                <td><button type="button" class="btn btn-light">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                            height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                                            <path
+                                                d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z" />
+                                    </svg></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card  mb-4">
+                <div class="card-header py-3 ">
+                    <div class="input-group">
+                        <input type="datetime-local" class="form-control rounded" placeholder="Data da Consulta" aria-label="Search" aria-describedby="search-addon" />
+                        <button type="button" class="btn" data-mdb-ripple-init  style="background-color: #3f9f9f;" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T520-640q0-33-23.5-56.5T440-720q-33 0-56.5 23.5T360-640q0 33 23.5 56.5T440-560ZM884-20 756-148q-21 12-45 20t-51 8q-75 0-127.5-52.5T480-300q0-75 52.5-127.5T660-480q75 0 127.5 52.5T840-300q0 27-8 51t-20 45L940-76l-56 56ZM660-200q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Zm-540 40v-111q0-34 17-63t47-44q51-26 115-44t142-18q-12 18-20.5 38.5T407-359q-60 5-107 20.5T221-306q-10 5-15.5 14.5T200-271v31h207q5 22 13.5 42t20.5 38H120Zm320-480Zm-33 400Z"/></svg></button>
+                    </div>
+                </div>
+                <div class="table-rolagem">
+                    <table class="table table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
+                        aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Name: activate to sort column descending" style="width: 57px;">Foto</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Position: activate to sort column ascending" style="width: 61px;">Nome
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Office: activate to sort column ascending" style="width: 49px;">
+                                    Consultorio
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Age: activate to sort column ascending" style="width: 31px;">Data</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-label="Start date: activate to sort column ascending" style="width: 68px;">
+                                    Relatorio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td class="sorting_1">Airi Satou</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>33</td>
+                                <td><button type="button" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg"
+                                            height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                                            <path
+                                                d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z" />
+                                        </svg></button></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="col-md-4">
+        
+        <!-- parte da lateral direita -->
+        <div class="card shadow mb-4 table-rolagem">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-palette">Notificações</h6>
+            </div>
+            <div class="table-rolagem">
+                <table class="table table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
+                    aria-describedby="dataTable_info" style="width: 100%;">
+                    <tbody>
+                        <tr class="odd ">
+                            <td class="sorting_1">Nenhuma notificação!</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
