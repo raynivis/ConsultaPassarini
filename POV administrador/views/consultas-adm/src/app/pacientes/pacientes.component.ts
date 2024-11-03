@@ -53,10 +53,17 @@ export class PacientesComponent implements OnInit{
   }
 
   filtrarConsultas(): void {
-    this.consultasFiltradas = this.consultas.filter((consulta) =>
-      this.buscarPaciente(consulta.cpf_paciente)?.nome
-        .toLowerCase()
-        .includes(this.buscaNome.toLowerCase())
-    );
+    this.consultasFiltradas = this.consultas
+      .filter((consulta) =>
+        this.buscarPaciente(consulta.cpf_paciente)?.nome
+          .toLowerCase()
+          .includes(this.buscaNome.toLowerCase())
+      )
+      .sort((a, b) => {
+        const nomeA = this.buscarPaciente(a.cpf_paciente)?.nome.toLowerCase() || '';
+        const nomeB = this.buscarPaciente(b.cpf_paciente)?.nome.toLowerCase() || '';
+        return nomeA.localeCompare(nomeB);
+      });
   }
+  
 }
