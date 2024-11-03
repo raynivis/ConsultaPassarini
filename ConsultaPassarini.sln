@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{B8107CA4-D7A9-4107-B5A5-930BBCBF4E86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaPassarini", "database\AgendaPassarini\AgendaPassarini.csproj", "{98ADB007-BB3B-4BF0-ADC2-1198A87E9EF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98ADB007-BB3B-4BF0-ADC2-1198A87E9EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98ADB007-BB3B-4BF0-ADC2-1198A87E9EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98ADB007-BB3B-4BF0-ADC2-1198A87E9EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98ADB007-BB3B-4BF0-ADC2-1198A87E9EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{98ADB007-BB3B-4BF0-ADC2-1198A87E9EF4} = {B8107CA4-D7A9-4107-B5A5-930BBCBF4E86}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ACF3D286-7AB3-42C8-9101-6A0B96D93E62}
+	EndGlobalSection
+EndGlobal
