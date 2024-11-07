@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.text-palette{
+    color: #3f9f9f;
+}
+
+li .text-palette:hover{
+    background-color: #3f9f9f;
+    color: white;
+}
+
+.table-rolagem {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.button-palette{
+    background-color: white;
+    color: #3f9f9f;
+    border-color: #3f9f9f;
+}
+
+.button-palette:hover{
+    background-color: #3f9f9f;;
+    color: white;
+    border-color: #3f9f9f;
+}
