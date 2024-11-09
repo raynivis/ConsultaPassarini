@@ -1,106 +1,156 @@
 {
-    "pessoas": [
-        {
-            "id": "12345678900",
-            "senha": "senha123",
-            "nome": "João Silva",
-            "sexo": "Masculino",
-            "dataNasc": "1990-01-01T00:00:00",
-            "raca_cor": "Branco",
-            "celular": "999999999",
-            "nome_mae": "Maria Silva",
-            "nome_pai": "José Silva",
-            "genero": "Masculino",
-            "orientacao_sexual": "Heterossexual",
-            "logradouro": "Rua Exemplo",
-            "numero": 123,
-            "bairro": "Centro",
-            "cidade": "São Paulo",
-            "estado": "SP"
-        },
-        {
-            "id": "98765432100",
-            "senha": "senha456",
-            "nome": "Ana Pereira",
-            "sexo": "Feminino",
-            "dataNasc": "1985-05-20T00:00:00",
-            "raca_cor": "Pardo",
-            "celular": "888888888",
-            "nome_mae": "Clara Pereira",
-            "nome_pai": "Carlos Pereira",
-            "genero": "Feminino",
-            "orientacao_sexual": "Bissexual",
-            "logradouro": "Av. Teste",
-            "numero": 456,
-            "bairro": "Bairro Novo",
-            "cidade": "Rio de Janeiro",
-            "estado": "RJ"
-        }
-    ],
-    "doutora": [
-        {
-            "id": "admin",
-            "especializacoes": "Ortopedista",
-            "email": "doutora.maria@example.com",
-            "telefone": "999999999",
-            "descricao": "Especialista em cardiologia com 10 anos de experiência.",
-            "senha": "admin"
-        }
-    ],
-    "clinicas": [
-        {
-            "id": 1,
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "nome": "Clínica São Paulo",
-            "endereco": "Av. Paulista, 1000",
-            "email": "contato@clinicasaopaulo.com",
-            "telefone": "11999999999",
-            "infos_ad": "Atendimento 24 horas"
-        },
-        {
-            "id": 2,
-            "cidade": "Rio de Janeiro",
-            "estado": "RJ",
-            "nome": "Clínica Carioca",
-            "endereco": "Rua das Flores, 200",
-            "email": "contato@clinicacarioca.com",
-            "telefone": "21988888888",
-            "infos_ad": "Especializada em cardiologia e dermatologia"
-        }
-    ],
-    "consultas": [
-        {
-            "id": 1,
-            "tipo_consulta": "Cardiologia",
-            "preco": 200.0,
-            "data_consulta": "2024-10-15T09:30:00",
-            "cpf_paciente": "12345678900",
-            "id_clinica": 1
-        },
-        {
-            "id": 2,
-            "tipo_consulta": "Dermatologia",
-            "preco": 150.0,
-            "data_consulta": "2024-10-16T14:00:00",
-            "cpf_paciente": "98765432100",
-            "id_clinica": 2
-        },
-        {
-            "id": 3,
-            "tipo_consulta": "Ortopedia",
-            "preco": 200.0,
-            "data_consulta": "2024-10-15T09:30:00",
-            "cpf_paciente": "",
-            "id_clinica": 1
-        },
-        {
-            "id": 4,
-            "tipo_consulta": "Ortopedia",
-            "preco": 200.0,
-            "data_consulta": "2024-10-15T09:30:00",
-            "cpf_paciente": "98765432100",
-            "id_clinica": 1
-        }
-    ]
+  "pessoas": [
+    {
+      "id": "12345678900",
+      "senha": "senha123",
+      "nome": "João Silva",
+      "sexo": "Masculino",
+      "dataNasc": "1990-01-01T00:00:00",
+      "raca_cor": "Branco",
+      "celular": "999999999",
+      "nome_mae": "Maria Silva",
+      "nome_pai": "José Silva",
+      "genero": "Masculino",
+      "orientacao_sexual": "Heterossexual",
+      "logradouro": "Rua Exemplo",
+      "numero": 123,
+      "bairro": "Centro",
+      "cidade": "São Paulo",
+      "estado": "SP"
+    },
+    {
+      "id": "98765432100",
+      "senha": "senha456",
+      "nome": "Ana Pereira",
+      "sexo": "Feminino",
+      "dataNasc": "1985-05-20T00:00:00",
+      "raca_cor": "Pardo",
+      "celular": "888888888",
+      "nome_mae": "Clara Pereira",
+      "nome_pai": "Carlos Pereira",
+      "genero": "Feminino",
+      "orientacao_sexual": "Bissexual",
+      "logradouro": "Av. Teste",
+      "numero": 456,
+      "bairro": "Bairro Novo",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ"
+    }
+  ],
+  "doutora": [
+    {
+      "id": "admin",
+      "especializacoes": "Ortopedista",
+      "email": "doutora.maria@example.com",
+      "telefone": "999999999",
+      "descricao": "Especialista em cardiologia com 10 anos de experisnciass.",
+      "senha": "admin"
+    }
+  ],
+  "clinicas": [
+    {
+      "id": "1",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "nome": "Clínica São Paulo",
+      "endereco": "Av. Paulista, 1000",
+      "email": "contato@clinicasaopaulo.com",
+      "telefone": "11999999999",
+      "infos_ad": "Atendimento 24 horas"
+    },
+    {
+      "id": "2",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "nome": "Clínica Carioca",
+      "endereco": "Rua das Flores, 200",
+      "email": "contato@clinicacarioca.com",
+      "telefone": "21988888888",
+      "infos_ad": "Especializada em cardiologia e dermatologia"
+    },
+    {
+      "id": 3,
+      "cidade": "a",
+      "estado": "a",
+      "nome": "a",
+      "endereco": "a",
+      "email": "a",
+      "telefone": "a",
+      "infos_ad": "a"
+    }
+  ],
+  "consultas": [
+    {
+      "id": "1",
+      "tipo_consulta": "Cardiologia",
+      "preco": 200,
+      "data_consulta": "2024-10-15T09:30:00",
+      "cpf_paciente": "12345678900",
+      "id_clinica": 1
+    },
+    {
+      "id": "2",
+      "tipo_consulta": "Dermatologia",
+      "preco": 150,
+      "data_consulta": "2024-10-16T14:00:00",
+      "cpf_paciente": "98765432100",
+      "id_clinica": 2
+    },
+    {
+      "id": "3",
+      "tipo_consulta": "Ortopedia",
+      "preco": 200,
+      "data_consulta": "2024-10-15T09:30:00",
+      "cpf_paciente": "",
+      "id_clinica": 1
+    },
+    {
+      "id": "4",
+      "tipo_consulta": "Ortopedia",
+      "preco": 200,
+      "data_consulta": "2024-10-15T09:30:00",
+      "cpf_paciente": "98765432100",
+      "id_clinica": 1
+    },
+    {
+      "id": 5,
+      "tipo_consulta": "normal",
+      "preco": 2131,
+      "data_consulta": "2222-02-12T12:22",
+      "cpf_paciente": "",
+      "id_clinica": "2"
+    },
+    {
+      "id": 6,
+      "tipo_consulta": "normal",
+      "preco": 2131,
+      "data_consulta": "2222-02-12T12:22",
+      "cpf_paciente": "",
+      "id_clinica": "2"
+    },
+    {
+      "id": 7,
+      "tipo_consulta": "normal",
+      "preco": 2131,
+      "data_consulta": "2222-02-12T12:22",
+      "cpf_paciente": "",
+      "id_clinica": "2"
+    },
+    {
+      "id": 8,
+      "tipo_consulta": "normal",
+      "preco": 2131,
+      "data_consulta": "2222-02-12T12:22",
+      "cpf_paciente": "",
+      "id_clinica": "2"
+    },
+    {
+      "id": 9,
+      "tipo_consulta": "normal",
+      "preco": 1223,
+      "data_consulta": "2222-02-12T12:22",
+      "cpf_paciente": "",
+      "id_clinica": "2"
+    }
+  ]
 }

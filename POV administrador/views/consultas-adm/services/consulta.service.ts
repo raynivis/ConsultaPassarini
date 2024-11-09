@@ -15,4 +15,8 @@ export class ConsultaService {
   getConsultas () : Observable<Consulta[]>{
     return this.http.get<Consulta[]>(this.apiUrl);
   }
+
+  addConsulta(consulta: Consulta) : Observable<Consulta>{
+    return this.http.post<Consulta>(this.apiUrl, consulta);  
+  }
 }

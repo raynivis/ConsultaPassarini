@@ -11,3 +11,8 @@ li .text-palette:hover{
     overflow-y: auto;
 }
 
+.toast {
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+}

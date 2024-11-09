@@ -1,151 +1,193 @@
+<!--Notificao de alteracao-->
+<div #alt class="toast position-fixed align-items-center text-bg-success border-0" role="alert"
+  aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Alteração feita com sucesso!
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+<!--Notificao de nova clinica bem sucedida-->
+<div #new class="toast position-fixed align-items-center text-bg-success border-0" role="alert"
+  aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Clínica cadastrada com sucesso!
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
+<div #meuToast class="toast position-fixed align-items-center text-bg-success border-0" role="alert"
+  aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Alteração feita com sucesso!
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
 <app-header></app-header>
 
 <div class="row g-5 m-3">
-    <div class="col-md-8">
-        <section class="intro">
-            <div class="bg-image-vertical h-100">
-              <div class="mask d-flex align-items-center h-100">
-                <div class="container">
-                  <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10">
-                      <div class="card" style="border-radius: 1rem;">
-                        <div class="card-body p-5">
-          
-                          <h4 class="mb-5 text-center text-palette">Informações Sobre a Doutora</h4>
-          
-                          <form>
-                        
-                            <!-- Text input -->
-                            <div class="form-outline mb-4">
-                              <input #InputForma type="text" id="form6Example3" class="form-control" [disabled]="true" />
-                              <label class="form-label" for="form6Example3">Formações</label>
-                            </div>
-          
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                              <input #InputEmail type="email" id="form6Example5" class="form-control" [disabled]="true" />
-                              <label class="form-label" for="form6Example5">Email</label>
-                            </div>
-          
-                            <!-- Telefone input -->
-                            <div class="form-outline mb-4">
-                              <input #InputTelefone type="text" id="form6Example6" class="form-control"  [disabled]="true"/>
-                              <label class="form-label" for="form6Example6">Telefone</label>
-                            </div>
-          
-                            <!-- Descrição input -->
-                            <div class="form-outline mb-4">
-                              <textarea #InputDesc class="form-control" [disabled]="true" id="form6Example7" rows="5"></textarea >
-                              <label class="form-label" for="form6Example7">Descrição Principal</label>
-                            </div>
-                                    
-                          </form>
-                            <!-- Submit button -->
-                            <div class="d-flex justify-content-between">
-                                <button (click)="ativarInput()" class="btn btn-outline-primary btn-rounded btn-block">Editar</button>
-                                <button #Botao type="submit" class="btn btn-outline-success btn-rounded btn-block" [disabled]="true">Salvar</button>
-                            </div>
-                        </div>
+  <div class="col-md-8">
+    <section class="intro">
+      <div class="bg-image-vertical h-100">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <div class="card" style="border-radius: 1rem;">
+                  <div class="card-body p-5">
+
+                    <h4 class="mb-5 text-center text-palette">Informações Sobre a Doutora</h4>
+
+                    <form [formGroup]="formulario">
+
+                      <!-- Formacoes input -->
+                      <div class="form-outline mb-4">
+                        <input #InputForma type="text" id="form6Example3" class="form-control"
+                          formControlName="formacoes" />
+                        <label class="form-label" for="form6Example3">Formações</label>
                       </div>
+
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <input #InputEmail type="email" id="form6Example5" class="form-control"
+                          formControlName="email" />
+                        <label class="form-label" for="form6Example5">Email</label>
+                      </div>
+
+                      <!-- Telefone input -->
+                      <div class="form-outline mb-4">
+                        <input #InputTelefone type="text" id="form6Example6" class="form-control"
+                          formControlName="telefone" />
+                        <label class="form-label" for="form6Example6">Telefone</label>
+                      </div>
+
+                      <!-- Descrição input -->
+                      <div class="form-outline mb-4">
+                        <textarea #InputDesc class="form-control" formControlName="descricao" id="form6Example7"
+                          rows="5"></textarea>
+                        <label class="form-label" for="form6Example7">Descrição Principal</label>
+                      </div>
+
+                    </form>
+                    <!-- Submit button -->
+                    <div class="d-flex justify-content-between">
+                      <button (click)="ativarInput()"
+                        class="btn btn-outline-primary btn-rounded btn-block">Editar</button>
+                      <button (click)="salvarDoutora()" #Botao
+                        class="btn btn-outline-success btn-rounded btn-block">Salvar</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-        <br/>
-        <!--Clinicas-->
-        <section class="intro">
-            <div class="bg-image-vertical h-100">
-              <div class="mask d-flex align-items-center h-100">
-                <div class="container">
-                  <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10">
-                      <div class="card" style="border-radius: 1rem;">
-                        <div class="card-body p-5">
-          
-                            <h4 class="mb-5 text-center text-palette">Adicionar Clinica</h4>
-          
-                          <form>
-                            <!-- 2 column grid layout with text inputs for the first and last names -->
-                            <div class="row">
-                              <div class="col-12 col-md-6 mb-4">
-                                <div class="form-outline">
-                                  <input  placeholder="Cidade" type="text" id="form6Example1" class="form-control" />
-                                  <label class="form-label" for="form6Example1">Cidade</label>
-                                </div>
-                              </div>
-                              <div class="col-12 col-md-6 mb-4">
-                                <div class="form-outline">
-                                  <input placeholder="SP/MS" type="text" id="form6Example2" class="form-control" />
-                                  <label class="form-label" for="form6Example2">Estado</label>
-                                </div>
-                              </div>
-                            </div>
-          
-                            <!-- Text input -->
-                            <div class="form-outline mb-4">
-                              <input type="text" id="form6Example3" class="form-control" />
-                              <label class="form-label" for="form6Example3">Nome da clínica</label>
-                            </div>
-          
-                            <!-- Text input -->
-                            <div class="form-outline mb-4">
-                              <input type="text" id="form6Example4" class="form-control" />
-                              <label class="form-label" for="form6Example4">Endereço</label>
-                            </div>
-          
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                              <input type="email" id="form6Example5" class="form-control" />
-                              <label class="form-label" for="form6Example5">Email</label>
-                            </div>
-          
-                            <!-- Number input -->
-                            <div class="form-outline mb-4">
-                              <input type="text" id="form6Example6" class="form-control" />
-                              <label class="form-label" for="form6Example6">Telefone</label>
-                            </div>
-          
-                            <!-- Message input -->
-                            <div class="form-outline mb-4">
-                              <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-                              <label class="form-label" for="form6Example7">Informações Adicionais</label>
-                            </div>
-          
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-outline-success btn-rounded btn-block">Enviar</button>
-                          </form>
-          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        
-    </div>
-
-    <div class="col-md-4">
-        
-        <!-- parte da lateral direita -->
-        <div class="card shadow mb-4 table-rolagem">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-palette">Notificações</h6>
-            </div>
-            <div class="table-rolagem">
-                <table class="table table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
-                    aria-describedby="dataTable_info" style="width: 100%;">
-                    <tbody>
-                        <tr class="odd ">
-                            <td class="sorting_1">Nenhuma notificação!</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
+          </div>
         </div>
+      </div>
+    </section>
+    <br />
+    <!--Clinicas-->
+    <section class="intro">
+      <div class="bg-image-vertical h-100">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <div class="card" style="border-radius: 1rem;">
+                  <div class="card-body p-5">
+
+                    <h4 class="mb-5 text-center text-palette">Adicionar Clinica</h4>
+
+                    <form (ngSubmit)="NovaClinica()">
+                      <!-- 2 column grid layout with text inputs for the first and last names -->
+                      <div class="row">
+                        <div class="col-12 col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input [(ngModel)]="cidade" [ngModelOptions]="{standalone: true}" placeholder="Cidade" type="text" id="form6Example1"
+                              class="form-control" />
+                            <label class="form-label" for="form6Example1">Cidade</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input [(ngModel)]="estado" [ngModelOptions]="{standalone: true}" placeholder="SP/MS" type="text" id="form6Example2"
+                              class="form-control" />
+                            <label class="form-label" for="form6Example2">Estado</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Nome input -->
+                      <div class="form-outline mb-4">
+                        <input [(ngModel)]="nomeCli" [ngModelOptions]="{standalone: true}" type="text" id="form6Example3" class="form-control" />
+                        <label class="form-label" for="form6Example3">Nome da clínica</label>
+                      </div>
+
+                      <!-- Endereco input -->
+                      <div class="form-outline mb-4">
+                        <input [(ngModel)]="endereco" [ngModelOptions]="{standalone: true}" type="text" id="form6Example4" class="form-control" />
+                        <label class="form-label" for="form6Example4">Endereço</label>
+                      </div>
+
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" type="email" id="form6Example5" class="form-control" />
+                        <label class="form-label" for="form6Example5">Email</label>
+                      </div>
+
+                      <!-- Telefone input -->
+                      <div class="form-outline mb-4">
+                        <input [(ngModel)]="telefone" [ngModelOptions]="{standalone: true}" type="text" id="form6Example6" class="form-control" />
+                        <label class="form-label" for="form6Example6">Telefone</label>
+                      </div>
+
+                      <!-- Info input -->
+                      <div class="form-outline mb-4">
+                        <textarea [(ngModel)]="informacoes" [ngModelOptions]="{standalone: true}" class="form-control" id="form6Example7" rows="4"></textarea>
+                        <label class="form-label" for="form6Example7">Informações Adicionais</label>
+                      </div>
+
+                      <!-- Submit button -->
+                      <button type="submit" class="btn btn-outline-success btn-rounded btn-block">Enviar</button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="col-md-4">
+
+    <!-- parte da lateral direita -->
+    <div class="card shadow mb-4 table-rolagem">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-palette">Notificações</h6>
+      </div>
+      <div class="table-rolagem">
+        <table class="table table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
+          aria-describedby="dataTable_info" style="width: 100%;">
+          <tbody>
+            <tr class="odd ">
+              <td class="sorting_1">Nenhuma notificação!</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
