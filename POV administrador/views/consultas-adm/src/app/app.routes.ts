@@ -16,6 +16,6 @@ export const routes: Routes = [
     {path: 'perfil', component: PerfilComponent},
     {path: 'cadastrovagas/:id', component: CadastroVgComponent},
     {path: 'edita/:id', component: EditaVgComponent},
-    {path: 'editarvagas', component: EditarVgComponent}
+    {path: 'editarvagas/:id', component: EditarVgComponent}
 ];
 

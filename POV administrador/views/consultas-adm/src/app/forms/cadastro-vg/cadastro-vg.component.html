@@ -1,3 +1,15 @@
+<!--Notificao de nova consulta bem sucedida-->
+<div #new class="toast position-fixed align-items-center text-bg-success border-0" role="alert"
+  aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Consulta cadastrada com sucesso!
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
 <app-header></app-header>
 
 <div class="row g-5 m-3">
@@ -15,35 +27,34 @@
           
                           <form>
                         
-                            <!-- Text input -->
+                            <!-- Tipo de Consulta-->
                             <div class="form-outline mb-4">
-                                <select class="form-select" aria-label="Default select example" id="consulta" formControlName="tipoConsulta">
-                                    <option value="normal">Normal</option>
-                                    <option value="primeiraConsulta">Primeira Consulta</option>
-                                    <option value="remota">Remota</option>
-                                    <option value="retorno">Retorno</option>
-                                    <option value="tratamentoTraumas">Tratamento de Traumas</option>
+                                <select #tipo class="form-select" aria-label="Default select example" id="consulta" formControlName="tipoConsulta">
+                                    <option value="Normal">Normal</option>
+                                    <option value="Primeira Consulta">Primeira Consulta</option>
+                                    <option value="Retorno">Retorno</option>
+                                    <option value="Tratamento de Traumas">Tratamento de Traumas</option>
                                 </select>
                               <br/>
                               <label class="form-label" for="form6Example3">Tipo de Consulta</label>
                             </div>
           
-                            <!-- Email input -->
+                            <!-- preco input -->
                             <div class="form-outline mb-4">
-                              <input type="number" id="form6Example5" class="form-control"  />
+                              <input #preco type="number" id="form6Example5" class="form-control"  />
                               <label class="form-label" for="form6Example5">Preço</label>
                             </div>
           
                             <!-- Telefone input -->
                             <div class="form-outline mb-4">
-                              <input type="datetime-local" id="form6Example6" class="form-control" />
+                              <input #data type="datetime-local" id="form6Example6" class="form-control" />
                               <label class="form-label" for="form6Example6">Data</label>
                             </div>
                                     
                           </form>
                             <!-- Submit button -->
                             <div class="d-flex justify-content-between">
-                                <button type="submit" class="btn btn-outline-success btn-rounded btn-block">Cadastrar</button>
+                                <button (click)="adicionarConsulta()" type="submit" class="btn btn-outline-success btn-rounded btn-block">Cadastrar</button>
                             </div>
                         </div>
                       </div>

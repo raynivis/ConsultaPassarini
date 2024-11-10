@@ -15,4 +15,15 @@ export class ConsultaService {
   getConsultas () : Observable<Consulta[]>{
     return this.http.get<Consulta[]>(this.apiUrl);
   }
+
+  addConsulta(consulta: Consulta) : Observable<Consulta>{
+    return this.http.post<Consulta>(this.apiUrl, consulta);  
+  }
+  deleteConsulta(consulta: Consulta) : Observable<Consulta>{
+    return this.http.delete<Consulta>(`${this.apiUrl}/${consulta.id}`);
+  }
+
+  updateConsulta(consulta: Consulta) : Observable<Consulta>{
+    return this.http.put<Consulta>(`${this.apiUrl}/${consulta.id}`, consulta);
+  }
 }

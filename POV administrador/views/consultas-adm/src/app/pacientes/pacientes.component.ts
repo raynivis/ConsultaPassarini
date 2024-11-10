@@ -30,7 +30,7 @@ export class PacientesComponent implements OnInit{
   ngOnInit(): void {
     this.pessoaService.getPessoas().subscribe(dado => { this.pacientes = dado; });
     this.clinicaService.getClinicas().subscribe(dado => { this.clinicas = dado; });
-    this.consutaService.getConsultas().subscribe(dado => { this.consultas = dado; });
+    this.consutaService.getConsultas().subscribe(dado => { this.consultas = dado.reverse(); });
     this.filtrarConsultas();
   }
 
@@ -43,7 +43,7 @@ export class PacientesComponent implements OnInit{
     return null;
   }
 
-  buscarClinica(idclinica: number): Clinica | null {
+  buscarClinica(idclinica: string): Clinica | null {
     for (const clinica of this.clinicas) {
       if (idclinica == clinica.id) {
         return clinica;

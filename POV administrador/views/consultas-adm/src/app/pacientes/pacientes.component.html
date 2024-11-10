@@ -55,7 +55,8 @@
                     <div class="input-group">
                         <input type="search" class="form-control rounded" placeholder="Nome do Paciente"
                             [(ngModel)]="buscaNome" aria-label="Search" />
-                        <button type="button" (click)="filtrarConsultas()" class="btn" data-mdb-ripple-init style="background-color: #3f9f9f;">
+                        <button type="button" (click)="filtrarConsultas()" class="btn" data-mdb-ripple-init
+                            style="background-color: #3f9f9f;">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                                 fill="#FFFFFF">
                                 <path
@@ -87,7 +88,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let consulta of consultasFiltradas">
+                            @for (consulta of consultasFiltradas; track $index) {
+                            <tr>
                                 @if (consulta.cpf_paciente) {
                                 <td>{{ consulta.id }}</td>
                                 <td>{{ buscarPaciente(consulta.cpf_paciente)?.nome }}</td>
@@ -100,6 +102,7 @@
                                         </svg></button></td>
                                 }
                             </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
