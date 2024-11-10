@@ -9,6 +9,7 @@ import { Clinica } from '../../../../../../../database/Models/Clinica';
 import { Pessoa } from '../../../../../../../database/Models/Pessoa';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './edita-vg.component.css'
 })
 export class EditaVgComponent implements OnInit{
+  fileUrl: string | null = null;
   id!: string;
   consultas: Consulta[] = [];
   pacientes: Pessoa[] = [];
@@ -27,7 +29,7 @@ export class EditaVgComponent implements OnInit{
   consultasFiltradas: Consulta[] = []; // Lista filtrada com base na pesquisa
   data: string = '';
   
-  constructor(private route: ActivatedRoute, private consutaService: ConsultaService, private pessoaService: PessoaService, private clinicaService: ClinicaService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private consutaService: ConsultaService, private pessoaService: PessoaService, private clinicaService: ClinicaService) {
   }
 
   ngOnInit() {
@@ -80,6 +82,31 @@ export class EditaVgComponent implements OnInit{
   
         // Retorna verdadeiro se a data da consulta for igual à data do filtro
         return dataFiltro && dataConsultaStr === dataFiltroStr;
+      });
+  }
+  onFileSelected(event: Event, consulta: Consulta) {
+    const input = event.target as HTMLInputElement;
+    const file = input?.files?.[0];
+    if (!file) {
+      console.log('Nenhum arquivo selecionado');
+      return;
+    }
+
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    this.http.post<{ filePath: string }>('http://localhost:3001/upload', formData)
+      .subscribe({
+        next: (response) => {
+          this.fileUrl = `http://localhost:3001${response.filePath}`;
+
+          consulta.relatorio = this.fileUrl!;
+          this.consutaService.updateConsulta(consulta).subscribe();
+        },
+        error: (error) => {
+          console.error('Erro ao fazer upload:', error);
+        }
       });
   }
 }

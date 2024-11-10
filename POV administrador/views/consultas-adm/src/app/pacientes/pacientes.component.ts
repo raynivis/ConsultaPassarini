@@ -8,6 +8,7 @@ import { Pessoa } from '../../../../../../database/Models/Pessoa';
 import { Clinica } from '../../../../../../database/Models/Clinica';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -17,14 +18,15 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './pacientes.component.html',
   styleUrl: './pacientes.component.css'
 })
-export class PacientesComponent implements OnInit{
+export class PacientesComponent implements OnInit {
+  fileUrl: string | null = null;
   consultas: Consulta[] = [];
   consultasFiltradas: Consulta[] = []; // Lista filtrada com base na pesquisa
   buscaNome: string = '';
   pacientes: Pessoa[] = [];
   clinicas: Clinica[] = [];
 
-  constructor(private pessoaService: PessoaService, private clinicaService: ClinicaService,
+  constructor(private http: HttpClient, private pessoaService: PessoaService, private clinicaService: ClinicaService,
     private consutaService: ConsultaService) { }
 
   ngOnInit(): void {
@@ -65,5 +67,30 @@ export class PacientesComponent implements OnInit{
         return nomeA.localeCompare(nomeB);
       });
   }
-  
+  onFileSelected(event: Event, consulta: Consulta) {
+
+    const input = event.target as HTMLInputElement;
+    const file = input?.files?.[0];
+    if (!file) {
+      console.log('Nenhum arquivo selecionado');
+      return;
+    }
+
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    this.http.post<{ filePath: string }>('http://localhost:3001/upload', formData)
+      .subscribe({
+        next: (response) => {
+          this.fileUrl = `http://localhost:3001${response.filePath}`;
+
+          consulta.relatorio = this.fileUrl!;
+          this.consutaService.updateConsulta(consulta).subscribe();
+        },
+        error: (error) => {
+          console.error('Erro ao fazer upload:', error);
+        }
+      });
+  }
 }

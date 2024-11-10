@@ -9,7 +9,8 @@ import { EditaVgComponent } from './forms/edita-vg/edita-vg.component';
 import { EditarVgComponent } from './forms/edita-vg/editar-vg/editar-vg.component';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', component: LoginComponent},
+    {path: 'home', component: HomeComponent},
     {path: 'pacientes', component: PacientesComponent},
     {path: 'vagas', component: VagasComponent},
     {path: 'login', component: LoginComponent},

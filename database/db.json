@@ -76,7 +76,8 @@
       "preco": 210,
       "data_consulta": "2024-11-10T09:30",
       "cpf_paciente": "12345678900",
-      "id_clinica": 1
+      "id_clinica": 1,
+      "relatorio": "http://localhost:3001/uploads/file-1731279363967-993499080.jpg"
     },
     {
       "id": "2",
@@ -84,7 +85,8 @@
       "preco": 150,
       "data_consulta": "2024-10-16T14:00:00",
       "cpf_paciente": "98765432100",
-      "id_clinica": 2
+      "id_clinica": 2,
+      "relatorio": ""
     },
     {
       "id": "3",
@@ -92,7 +94,8 @@
       "preco": 250,
       "data_consulta": "2024-10-15T09:30",
       "cpf_paciente": "",
-      "id_clinica": 1
+      "id_clinica": 1,
+      "relatorio": ""
     },
     {
       "id": "4",
@@ -100,7 +103,17 @@
       "preco": 122,
       "data_consulta": "2024-11-30T08:00",
       "cpf_paciente": "",
-      "id_clinica": "1"
+      "id_clinica": "1",
+      "relatorio": ""
+    },
+    {
+      "id": "5",
+      "tipo_consulta": "Normal",
+      "preco": 122,
+      "data_consulta": "2024-12-12T10:20",
+      "cpf_paciente": "",
+      "id_clinica": "2",
+      "relatorio": ""
     }
   ]
 }

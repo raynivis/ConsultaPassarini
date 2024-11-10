@@ -62,6 +62,7 @@ export class EditarVgComponent implements OnInit{
       data_consulta: this.data.nativeElement.value,
       cpf_paciente: '',
       id_clinica: this.consulta.id_clinica,
+      relatorio: this.consulta.relatorio
     }
     if(this.apagar.nativeElement.value == 'nao'){
       novaConsulta.cpf_paciente = this.consulta.cpf_paciente;

@@ -46,6 +46,7 @@ export class CadastroVgComponent implements OnInit{
       data_consulta: dataConsulta,
       cpf_paciente: '',
       id_clinica: (this.id).toString(),
+      relatorio: ''
     }
 
     this.consutaService.addConsulta(novaConsulta).subscribe((novaConsulta) => {
