@@ -58,6 +58,7 @@ export class PerfilComponent implements OnInit {
         descricao: [this.doutora.descricao]
       });
       this.formulario.disable();
+      this.Botao.nativeElement.disabled = true;
     });
   }
   // Método para ativar o input

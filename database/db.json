@@ -69,7 +69,7 @@
       "infos_ad": "Especializada em cardiologia e dermatologia"
     },
     {
-      "id": 3,
+      "id": "3",
       "cidade": "a",
       "estado": "a",
       "nome": "a",
@@ -82,9 +82,9 @@
   "consultas": [
     {
       "id": "1",
-      "tipo_consulta": "Cardiologia",
-      "preco": 200,
-      "data_consulta": "2024-10-15T09:30:00",
+      "tipo_consulta": "Primeira Consulta",
+      "preco": 210,
+      "data_consulta": "2024-10-15T09:30",
       "cpf_paciente": "12345678900",
       "id_clinica": 1
     },
@@ -98,59 +98,35 @@
     },
     {
       "id": "3",
-      "tipo_consulta": "Ortopedia",
+      "tipo_consulta": "Tratamento de Traumas",
       "preco": 200,
-      "data_consulta": "2024-10-15T09:30:00",
+      "data_consulta": "2024-10-15T09:30",
       "cpf_paciente": "",
       "id_clinica": 1
     },
     {
       "id": "4",
-      "tipo_consulta": "Ortopedia",
+      "tipo_consulta": "Normal",
       "preco": 200,
-      "data_consulta": "2024-10-15T09:30:00",
-      "cpf_paciente": "98765432100",
+      "data_consulta": "2024-12-12T09:30",
+      "cpf_paciente": "",
       "id_clinica": 1
     },
     {
-      "id": 5,
-      "tipo_consulta": "normal",
+      "id": "5",
+      "tipo_consulta": "Normal",
       "preco": 2131,
       "data_consulta": "2222-02-12T12:22",
       "cpf_paciente": "",
       "id_clinica": "2"
     },
     {
-      "id": 6,
+      "id": 10,
       "tipo_consulta": "normal",
-      "preco": 2131,
-      "data_consulta": "2222-02-12T12:22",
+      "preco": 120,
+      "data_consulta": "2024-11-11T18:38",
       "cpf_paciente": "",
-      "id_clinica": "2"
-    },
-    {
-      "id": 7,
-      "tipo_consulta": "normal",
-      "preco": 2131,
-      "data_consulta": "2222-02-12T12:22",
-      "cpf_paciente": "",
-      "id_clinica": "2"
-    },
-    {
-      "id": 8,
-      "tipo_consulta": "normal",
-      "preco": 2131,
-      "data_consulta": "2222-02-12T12:22",
-      "cpf_paciente": "",
-      "id_clinica": "2"
-    },
-    {
-      "id": 9,
-      "tipo_consulta": "normal",
-      "preco": 1223,
-      "data_consulta": "2222-02-12T12:22",
-      "cpf_paciente": "",
-      "id_clinica": "2"
+      "id_clinica": "1"
     }
   ]
 }
