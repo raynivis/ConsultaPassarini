@@ -86,7 +86,7 @@ export class PerfilComponent implements OnInit {
       return;
     }
     const nClinica = {
-      id: this.clinicas.length + 1,
+      id: (this.clinicas.length + 1).toString(),
       cidade: this.cidade,
       estado: this.estado,
       nome: this.nomeCli,

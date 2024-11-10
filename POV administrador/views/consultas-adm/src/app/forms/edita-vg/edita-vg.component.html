@@ -113,7 +113,7 @@
                                 <td>{{ consulta.tipo_consulta }}</td>
                                 <td>{{consulta.data_consulta | date: 'dd/MM/yyyy HH:mm'}} </td>
                                 <td>
-                                    <a href="/editarvagas">
+                                    <a [routerLink]="['/editarvagas', consulta.id]">
                                         <button type="button" class="btn"
                                             style="background-color: #3f9f9f; color: #ffffff;">Editar Consulta</button>
                                     </a>

@@ -40,12 +40,12 @@ export class CadastroVgComponent implements OnInit{
     }
 
     const novaConsulta = {
-      id : this.consultas.length+1,
+      id: (this.consultas.length+1).toString(),
       tipo_consulta: tipoConsulta,
       preco:  Number(precoConsulta),
       data_consulta: dataConsulta,
       cpf_paciente: '',
-      id_clinica: this.id,
+      id_clinica: (this.id).toString(),
     }
 
     this.consutaService.addConsulta(novaConsulta).subscribe((novaConsulta) => {

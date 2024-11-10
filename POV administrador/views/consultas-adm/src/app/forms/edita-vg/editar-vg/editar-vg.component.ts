@@ -18,7 +18,7 @@ import { Location } from '@angular/common';
 })
 export class EditarVgComponent implements OnInit{
 
-  id!: number;
+  id!: string;
   formulario!: FormGroup;
   consultas: Consulta[] = [];
   consulta!: Consulta;
@@ -45,7 +45,7 @@ export class EditarVgComponent implements OnInit{
     });
   }
 
-  buscarConsulta(id: number): Consulta | null {
+  buscarConsulta(id: string): Consulta | null {
     for (const consulta of this.consultas) {
       if (id == consulta.id) {
         return consulta;

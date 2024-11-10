@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './edita-vg.component.css'
 })
 export class EditaVgComponent implements OnInit{
-  id!: number;
+  id!: string;
   consultas: Consulta[] = [];
   pacientes: Pessoa[] = [];
   clinicas: Clinica[] = [];
@@ -35,7 +35,7 @@ export class EditaVgComponent implements OnInit{
       this.id = params['id']; 
       this.pessoaService.getPessoas().subscribe(dado => { this.pacientes = dado; });
       this.clinicaService.getClinicas().subscribe(dado => { this.clinicas = dado; }); 
-      this.consutaService.getConsultas().subscribe(dado => { this.consultas = dado; this.clinicasConsultas(); });
+      this.consutaService.getConsultas().subscribe(dado => { this.consultas = dado.reverse(); this.clinicasConsultas(); });
     });
   }
 
@@ -56,7 +56,7 @@ export class EditaVgComponent implements OnInit{
     return null;
   }
 
-  buscarClinica(idclinica: number): Clinica | null {
+  buscarClinica(idclinica: string): Clinica | null {
     for (const clinica of this.clinicas) {
       if (idclinica == clinica.id) {
         return clinica;
