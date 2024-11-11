@@ -1,0 +1,38 @@
+<div class="container-fluid p-0 vh-100 position-relative">
+    <!-- Fundo com ondulação -->
+    <div class="wave-bg position-absolute w-100 h-100">
+      <svg viewBox="0 0 1440 320" class="w-100">
+        <path fill="#A8E6E6" fill-opacity="1" d="M0,224L30,224C60,224,120,224,180,218.7C240,213,300,203,360,197.3C420,192,480,192,540,186.7C600,181,660,171,720,165.3C780,160,840,160,900,170.7C960,181,1020,203,1080,202.7C1140,203,1200,181,1260,186.7C1320,192,1380,224,1410,240L1440,256L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path>
+      </svg>
+    </div>
+  
+    <!-- Card de login -->
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="card shadow-lg custom-shadow" style="width: 22rem; background-color: #00A6A6; border-radius: 1rem; z-index: 1;">
+        <div class="card-body text-center">
+          <h2 class="card-title mb-2" style="color: #002859;">Login</h2>
+          <p class="card-text" style="color: #005B5B;">Paciente</p>
+          <a href="cadastro" class="d-block mb-3" style="color: #002859; font-weight: bold;">Não possuo cadastro</a>
+  
+          <form (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label for="cpf" class="form-label text-start w-100" style="color: #005B5B;">CPF</label>
+              <input type="text" id="cpf" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="cpf" name="cpf" placeholder="000.000.000-00" required>
+            </div>
+            <div class="mb-3">
+              <label for="senha" class="form-label text-start w-100" style="color: #005B5B;">Senha</label>
+              <input type="password" id="senha" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="senha" name="senha" placeholder="******" required>
+            </div>
+            <a href="#" class="d-block mb-3" style="color: #005B5B;">Esqueci minha senha</a>
+  
+            <button type="submit" class="btn btn-primary w-100" style="background-color: #002859; border: none;">Entrar</button>
+          </form>
+  
+          <div class="mt-4">
+            <img src="https://i.ibb.co/yfqQRJ9/logov2.png" alt="Logo" style="width: 240px; background-color: #9ce2e2; border-radius: 1rem">
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  

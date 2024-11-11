@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,6 @@ export class HomeComponent {
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
 })
 export class AppModule {}

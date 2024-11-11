@@ -1,0 +1,18 @@
+/* Sombra personalizada */
+.custom-shadow {
+  box-shadow: 0px 10px 150px #b0b0b0;
+}
+
+/* Estilo para a ondulação */
+.wave-bg {
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Ajuste para garantir que o conteúdo principal esteja acima do fundo */
+.container-fluid {
+  position: relative;
+  z-index: 1;
+}
