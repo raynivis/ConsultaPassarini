@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  activeTab: string = 'home'; // Define a aba inicial como 'home'
 
+  ativar(tab: string) {
+    this.activeTab = tab; // Atualiza a aba ativa com base na seleção do usuário
+  }
 }
+
+@NgModule({
+  declarations: [HomeComponent],
+  imports: [CommonModule],
+})
+export class AppModule {}
