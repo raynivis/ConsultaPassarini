@@ -20,23 +20,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './edita-vg.component.css'
 })
 export class EditaVgComponent implements OnInit{
-  fileUrl: string | null = null;
-  id!: string;
+  fileUrl: string | null = null; //link do arquivo q vai ser enviado pro json server
+  id!: string; //id da clinica passada por GET
+  //lista dos objetos
   consultas: Consulta[] = [];
   pacientes: Pessoa[] = [];
   clinicas: Clinica[] = [];
   consultasId: Consulta[] = [];
   consultasFiltradas: Consulta[] = []; // Lista filtrada com base na pesquisa
-  data: string = '';
-  
+  data: string = ''; //string do filtro
+
+  //chamando o back de arquivos e dados
   constructor(private http: HttpClient, private route: ActivatedRoute, private consutaService: ConsultaService, private pessoaService: PessoaService, private clinicaService: ClinicaService) {
   }
 
-  ngOnInit() {
+  ngOnInit() { //recebendo os dados na lista ao iniciar 
     this.route.params.subscribe(params => {
       this.id = params['id']; 
       this.pessoaService.getPessoas().subscribe(dado => { this.pacientes = dado; });
       this.clinicaService.getClinicas().subscribe(dado => { this.clinicas = dado; }); 
+      //invertendo a lista para o mais recente primeiro, e filtrando para as consultas da clinica id
       this.consutaService.getConsultas().subscribe(dado => { this.consultas = dado.reverse(); this.clinicasConsultas(); });
     });
   }
@@ -67,6 +70,7 @@ export class EditaVgComponent implements OnInit{
     return null;
   }
 
+  //filtrar a consulta na busca
   filtrarConsultas(): void {
     // Verifica se há uma data selecionada no input
     const dataFiltro = this.data ? new Date(this.data) : null;
@@ -84,6 +88,8 @@ export class EditaVgComponent implements OnInit{
         return dataFiltro && dataConsultaStr === dataFiltroStr;
       });
   }
+
+  // back end do arquivo dos relatorios
   onFileSelected(event: Event, consulta: Consulta) {
     const input = event.target as HTMLInputElement;
     const file = input?.files?.[0];

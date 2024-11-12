@@ -1,38 +1,63 @@
-<header class="p-3 mb-3 border-bottom">
-    <div>
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                <img src="https://i.ibb.co/yfqQRJ9/logo.png" alt="" width="152" height="82">
-            </a>
-
-        </div>
+<!--Notificao de login senha incorreto-->
+<div #erro class="toast position-fixed align-items-center text-bg-danger border-0" role="alert"
+  aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Usuário ou Senha Incorreto!
     </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
+
+<header class="p-3 mb-3 border-bottom">
+  <div>
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+        <img src="https://i.ibb.co/yfqQRJ9/logo.png" alt="" width="152" height="82">
+      </a>
+
+    </div>
+  </div>
 </header>
 
-<section class="vh-100">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card shadow-2-strong" style="border-radius: 1rem; border-color: #3f9f9f;">
-            <div class="card-body p-4 text-center" style="border-color: #3f9f9f;">
-  
-              <h4 class="mb-5">Bem-vindo Administrador</h4>
-  
-              <div data-mdb-input-init class="form-outline mb-1">
-                <input type="email" id="typeEmailX-2" placeholder="Usuario" class="form-control form-control-lg" />
-              </div>
-  
-              <div data-mdb-input-init class="form-outline mb-1">
-                <input type="password" id="typePasswordX-2" placeholder="Senha" class="form-control form-control-lg" />
-              </div>
-  
-              <a href="/home">
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark btn-lg btn-block" type="submit" >Entrar</button>
-              </a>
-              
+<section class="card" style="border-radius: 1rem;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <form style="width: 23rem;">
+
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in - Administrador</h3>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input #user type="text" id="form2Example18" class="form-control form-control-lg" />
+              <label class="form-label" for="form2Example18">Usuário</label>
             </div>
-          </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input #pass type="password" id="form2Example28" class="form-control form-control-lg" />
+              <label class="form-label" for="form2Example28">Senha</label>
+            </div>
+
+            <div class="pt-1 mb-4">
+              <button (click)="verificarLogin()" data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-lg btn-block" type="button"
+                style="background-color: #3f9f9f; color: white;">Entrar
+              </button>
+            </div>
+
+          </form>
+
         </div>
+
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="https://www.medguias.com.br/storage/images/announcements/8i1Qv6dw7m4rlNjj3eG2ASvQtxL3JSuYcGrDcZ7f.jpg"
+          alt="Login image" width="1080" height="1920" class="w-100 vh-100"  
+          style="object-fit: cover; object-position: left; border-radius: 1rem;">
       </div>
     </div>
-  </section>
+  </div>
+</section>

@@ -1,5 +1,98 @@
 <app-header></app-header>
 
+<!-- Modal -->
+<div class="modal fade" id="ModalPaciente" tabindex="-1" #ModalPaciente aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Informações do Paciente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="w-100 d-flex d-flex justify-content-around">
+                    <div class="col-md-4 gradient-custom text-center text-white"
+                        style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                            alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                    </div>
+                </div>
+                <div class="w-100 d-flex d-flex justify-content-between">
+                    <div>
+                        <p class="d-inline"><b>Nome: </b></p>
+                        <p class="d-inline font-weight-light">{{pacienteModel.nome}}</p>
+                    </div>
+                    <div>
+                        <p class="d-inline"><b>CPF: </b></p>
+                        <p class="d-inline">{{pacienteModel.id}}</p>
+                    </div>
+                </div>
+                <div class="w-100 d-flex d-flex justify-content-between">
+                    <div>
+                        <p class="d-inline"><b>Sexo: </b></p>
+                        <p class="d-inline font-weight-light">{{pacienteModel.sexo}}</p>
+                    </div>
+                    <div>
+                        <p class="d-inline"><b>Data de Nascimento: </b></p>
+                        <p class="d-inline">{{pacienteModel.dataNasc | date: 'dd/MM/yyyy'}}</p>
+                    </div>
+                </div>
+                <div class="w-100 d-flex d-flex justify-content-between">
+                    <div>
+                        <p class="d-inline"><b>Cor: </b></p>
+                        <p class="d-inline font-weight-light">{{pacienteModel.raca_cor}}</p>
+                    </div>
+                    <div>
+                        <p class="d-inline"><b>Celular: </b></p>
+                        <p class="d-inline">{{pacienteModel.celular}}</p>
+                    </div>
+                </div>
+                <div class="w-100 d-flex d-flex justify-content-between">
+                    <div>
+                        <p class="d-inline"><b>Nome da Mãe: </b></p>
+                        <p class="d-inline font-weight-light">{{pacienteModel.nome_mae}}</p>
+                    </div>
+                    <div>
+                        <p class="d-inline"><b>Nome do Pai: </b></p>
+                        <p class="d-inline">{{pacienteModel.nome_pai}}</p>
+                    </div>
+                </div>
+                <div class="w-100 d-flex d-flex justify-content-between">
+                    <div>
+                        <p class="d-inline"><b>Gênero: </b></p>
+                        <p class="d-inline font-weight-light">{{pacienteModel.genero}}</p>
+                    </div>
+                    <div>
+                        <p class="d-inline"><b>Orientação Sexual: </b></p>
+                        <p class="d-inline">{{pacienteModel.orientacao_sexual}}</p>
+                    </div>
+                </div>
+                <div class="w-100 d-flex d-flex justify-content-between">
+                    <div>
+                        <p class="d-inline"><b>Endereço: </b></p>
+                        <p class="d-inline font-weight-light">{{pacienteModel.logradouro}}, {{pacienteModel.numero}},
+                            {{pacienteModel.bairro}}</p>
+                    </div>
+                </div>
+                <div class="w-100 d-flex d-flex justify-content-between">
+                    <div>
+                        <p class="d-inline"><b>Cidade: </b></p>
+                        <p class="d-inline font-weight-light">{{pacienteModel.cidade}}</p>
+                    </div>
+                    <div>
+                        <p class="d-inline"><b>Estado: </b></p>
+                        <p class="d-inline">{{pacienteModel.estado}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Div principal--> 
 <div class="row g-5 m-3">
     <div class="col-md-8">
 
@@ -32,10 +125,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!--For das consultas com apenas pacientes vinculados-->
                             @for(consulta of consultas; track $index) {
                             <tr>
                                 @if (consulta.cpf_paciente) {
-                                <td>{{ consulta.id }}</td>
+                                <td>
+                                    <button type="button" class="btn"
+                                        (click)="openModal(buscarPaciente(consulta.cpf_paciente)!)">Launch demo modal
+                                    </button>
+                                </td>
                                 <td>{{ buscarPaciente(consulta.cpf_paciente)?.nome }}</td>
                                 <td>{{ buscarClinica(consulta.id_clinica)?.nome }}</td>
                                 <td>{{ consulta.data_consulta | date: 'dd/MM/yyyy HH:mm' }}</td>
@@ -70,7 +168,7 @@
                     </table>
                 </div>
             </div>
-
+            <!--Card do filtro das consultas-->
             <div class="card  mb-4">
                 <div class="card-header py-3 ">
                     <div class="input-group">
@@ -109,10 +207,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!--For das consultas com filtro-->
                             @for (consulta of consultasFiltradas; track $index) {
                             <tr>
                                 @if (consulta.cpf_paciente) {
-                                <td>{{ consulta.id }}</td>
+                                <td>
+                                    <button type="button" class="btn"
+                                        (click)="openModal(buscarPaciente(consulta.cpf_paciente)!)">Launch demo modal
+                                    </button>
+                                </td>
                                 <td>{{ buscarPaciente(consulta.cpf_paciente)?.nome }}</td>
                                 <td>{{ buscarClinica(consulta.id_clinica)?.nome }}</td>
                                 <td>{{ consulta.data_consulta | date: 'dd/MM/yyyy HH:mm' }}</td>

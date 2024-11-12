@@ -16,7 +16,8 @@
       "numero": 123,
       "bairro": "Centro",
       "cidade": "São Paulo",
-      "estado": "SP"
+      "estado": "SP",
+      "img": ""
     },
     {
       "id": "98765432100",
@@ -34,16 +35,17 @@
       "numero": 456,
       "bairro": "Bairro Novo",
       "cidade": "Rio de Janeiro",
-      "estado": "RJ"
+      "estado": "RJ",
+      "img": ""
     }
   ],
   "doutora": [
     {
       "id": "admin",
-      "especializacoes": "Ortopedista",
+      "especializacoes": "Ortopedista aa",
       "email": "doutora.maria@example.com",
       "telefone": "999999999ss",
-      "descricao": "Especialista em cardiologia com 10 anos de experienciass.",
+      "descricao": "Especialista em cardiologia com 10 anos de experienciassssss.",
       "senha": "admin"
     }
   ],
@@ -86,7 +88,7 @@
       "data_consulta": "2024-10-16T14:00:00",
       "cpf_paciente": "98765432100",
       "id_clinica": 2,
-      "relatorio": ""
+      "relatorio": "http://localhost:3001/uploads/file-1731367263168-236707086.webp"
     },
     {
       "id": "3",
