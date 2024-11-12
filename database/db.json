@@ -16,7 +16,8 @@
       "numero": 123,
       "bairro": "Centro",
       "cidade": "São Paulo",
-      "estado": "SP"
+      "estado": "SP",
+      "img": ""
     },
     {
       "id": "98765432100",
@@ -34,16 +35,17 @@
       "numero": 456,
       "bairro": "Bairro Novo",
       "cidade": "Rio de Janeiro",
-      "estado": "RJ"
+      "estado": "RJ",
+      "img": ""
     }
   ],
   "doutora": [
     {
       "id": "admin",
-      "especializacoes": "Ortopedista",
+      "especializacoes": "Ortopedista aa",
       "email": "doutora.maria@example.com",
       "telefone": "999999999ss",
-      "descricao": "Especialista em cardiologia com 10 anos de experienciass.",
+      "descricao": "Especialista em cardiologia com 10 anos de experienciassssss.",
       "senha": "admin"
     }
   ],
@@ -76,7 +78,8 @@
       "preco": 210,
       "data_consulta": "2024-11-10T09:30",
       "cpf_paciente": "12345678900",
-      "id_clinica": 1
+      "id_clinica": 1,
+      "relatorio": "http://localhost:3001/uploads/file-1731279363967-993499080.jpg"
     },
     {
       "id": "2",
@@ -84,7 +87,8 @@
       "preco": 150,
       "data_consulta": "2024-10-16T14:00:00",
       "cpf_paciente": "98765432100",
-      "id_clinica": 2
+      "id_clinica": 2,
+      "relatorio": "http://localhost:3001/uploads/file-1731367263168-236707086.webp"
     },
     {
       "id": "3",
@@ -92,7 +96,8 @@
       "preco": 250,
       "data_consulta": "2024-10-15T09:30",
       "cpf_paciente": "",
-      "id_clinica": 1
+      "id_clinica": 1,
+      "relatorio": ""
     },
     {
       "id": "4",
@@ -100,7 +105,17 @@
       "preco": 122,
       "data_consulta": "2024-11-30T08:00",
       "cpf_paciente": "",
-      "id_clinica": "1"
+      "id_clinica": "1",
+      "relatorio": ""
+    },
+    {
+      "id": "5",
+      "tipo_consulta": "Normal",
+      "preco": 122,
+      "data_consulta": "2024-12-12T10:20",
+      "cpf_paciente": "",
+      "id_clinica": "2",
+      "relatorio": ""
     }
   ]
 }

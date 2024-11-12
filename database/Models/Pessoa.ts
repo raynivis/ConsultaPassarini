@@ -15,4 +15,5 @@ export interface Pessoa {
     bairro: string;
     cidade: string;
     estado: string;
+    img: string;
 }

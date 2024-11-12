@@ -17,18 +17,19 @@ import { Location } from '@angular/common';
   styleUrl: './editar-vg.component.css'
 })
 export class EditarVgComponent implements OnInit{
-
+  //id pegado por url
   id!: string;
   formulario!: FormGroup;
-  consultas: Consulta[] = [];
-  consulta!: Consulta;
+  consultas: Consulta[] = []; //lista consulta
+  consulta!: Consulta; //consulta editada
+  //inputs
   @ViewChild('tipo') tipo!: ElementRef<HTMLInputElement>;
   @ViewChild('preco') preco!: ElementRef<HTMLInputElement>;
   @ViewChild('data') data!: ElementRef<HTMLInputElement>;
   @ViewChild('apagar') apagar!: ElementRef<HTMLInputElement>;
-  @ViewChild('new', { static: true }) new!: ElementRef;
+  @ViewChild('new', { static: true }) new!: ElementRef; //notificaocao
 
-  
+  //back end
   constructor(private route: ActivatedRoute, private consultaService: ConsultaService, private location: Location) {
   }
 
@@ -54,7 +55,9 @@ export class EditarVgComponent implements OnInit{
     return null;
   }
 
+  //metodo de atualizar consulta
   salvarConsulta(){
+    //nova consulta com os dados novos
     const novaConsulta = {
       id : this.consulta.id,
       tipo_consulta: this.tipo.nativeElement.value,
@@ -62,16 +65,21 @@ export class EditarVgComponent implements OnInit{
       data_consulta: this.data.nativeElement.value,
       cpf_paciente: '',
       id_clinica: this.consulta.id_clinica,
+      relatorio: this.consulta.relatorio
     }
+    //verificando se é para apagar o cliente
     if(this.apagar.nativeElement.value == 'nao'){
       novaConsulta.cpf_paciente = this.consulta.cpf_paciente;
     }
+    //mandando pro servidor a nova consulta a ser substituida
     this.consultaService.updateConsulta(novaConsulta).subscribe();
+    //notificao
     const toastElement = new (window as any).bootstrap.Toast(this.new.nativeElement);
     toastElement.show();
   }
 
   apagarConsulta(){
+    //apagar a consulta do bd
     this.consultaService.deleteConsulta(this.consulta).subscribe(() => {
       alert('Excluído Consulta com Sucesso, Você será redirecionado!');
       this.location.back(); // Volta para a página anterior

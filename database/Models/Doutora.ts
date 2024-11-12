@@ -1,5 +1,5 @@
 export interface Doutora {
-    id: number;
+    id: string;
     especializacoes: string;
     email: string;
     telefone: string;

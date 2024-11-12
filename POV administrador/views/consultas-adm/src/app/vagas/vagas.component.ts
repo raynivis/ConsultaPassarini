@@ -17,15 +17,16 @@ import { CommonModule } from '@angular/common';
 export class VagasComponent implements OnInit {
   clinicas: Clinica[] = [];
   consultas: Consulta[] = [];
+  //lista das consultas 
 
-  constructor(private clinicaService: ClinicaService, private consultaService: ConsultaService) { }
+  constructor(private clinicaService: ClinicaService, private consultaService: ConsultaService) { } //back-end
 
-  ngOnInit(): void {
+  ngOnInit(): void { //colocando os dados do bd nas listas
     this.clinicaService.getClinicas().subscribe(dado => { this.clinicas = dado; });
     this.consultaService.getConsultas().subscribe(dado => { this.consultas = dado; })
   }
 
-  qtdConsultaMes(id: string): number {
+  qtdConsultaMes(id: string): number { //calculo das consultas por clinica
     let qtd: number = 0;
     for (const consulta of this.consultas) {
       if (consulta.id_clinica == id) {

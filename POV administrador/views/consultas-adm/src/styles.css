@@ -16,3 +16,21 @@ li .text-palette:hover{
     right: 15px;
     z-index: 9999;
 }
+
+/* upload.component.css */
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Oculta o input real */
+  input[type="file"] {
+    display: none;
+  }
+  
