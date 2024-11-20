@@ -1,23 +1,31 @@
-import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "../header/header.component";
+import { ClinicaService } from '../../../../../../POV administrador/views/consultas-adm/services/clinica.service';
+import { Clinica } from '../../../../../../database/Models/Clinica';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [HeaderComponent, CommonModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'] // Corrigido o nome de 'styleUrl' para 'styleUrls'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  @ViewChild('ModalPaciente') modalElement!: ElementRef;
+  clinicas: Clinica[] = []; // lista de clinicas
+
   activeTab: string = 'home'; // Define a aba inicial como 'home'
 
   ativar(tab: string) {
     this.activeTab = tab; // Atualiza a aba ativa com base na seleção do usuário
   }
-}
 
-@NgModule({
-  declarations: [HomeComponent],
-  imports: [CommonModule, HeaderComponent],
-})
-export class AppModule {}
+  constructor(private clinicaService: ClinicaService) { }
+
+  ngOnInit(): void {
+    this.clinicaService.getClinicas().subscribe(dado => { 
+      this.clinicas = dado; 
+    });
+  }
+}

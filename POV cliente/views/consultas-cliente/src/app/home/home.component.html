@@ -10,7 +10,8 @@
                     src="https://www.medguias.com.br/storage/images/announcements/KSaRT7AlwraNbg1uum6ZAksx5zvWRH97c1IhfvdF.png"
                     class="rounded-start img-fluid" alt="BRUNA FOTO" />
             </div>
-            <div class="social-links mt-3 text-center text-decoration-none me-3">
+            <div
+                class="social-links mt-3 text-center text-decoration-none me-3">
                 <i class="fas fa-heart"></i> Telemedicina
             </div>
             <div
@@ -110,125 +111,40 @@
 
                 <div *ngIf="activeTab === 'clinics'" id="clinics"
                     role="tabpanel" aria-labelledby="clinics-tab">
+                    <!-- itera pelas clinicas cadastradas no perfil de administrador da doutora e adiciona no site dos clientes -->
+                    @for(clinica of clinicas; track $index) {
                     <div class="card mb-4"
                         style="width: auto; max-width: fit-content;">
                         <h6 class="card-header"
-                            style="background-color: #a5e1e1;">NUMED</h6>
+                            style="background-color: #a5e1e1;">{{ clinica.nome
+                            }}</h6>
                         <div class="card-body">
                             <div class="d-flex flex-column gap-3">
                                 <!-- Botão com cor personalizada para o endereço -->
                                 <button class="btn btn-custom me-2"
                                     type="button">
                                     <a
-                                        href="https://www.google.com/maps/search/?api=1&query=NUMED+-+R.+Bruno+García%2C2077+Jardim+Primaveril-Três+Lagoas"
+                                        href="{{ clinica.infos_ad }}"
                                         style="color: inherit; text-decoration: none;"
                                         target="_blank">
                                         <i
                                             class="fas fa-map-marker-alt me-2"></i>
-                                        NUMED - R. Bruno García, 2077 - Jardim
-                                        Primaveril, Três Lagoas - MS, CEP
-                                        79603070
+                                        {{ clinica.endereco }}
                                     </a>
                                 </button>
                                 <div style="margin-left: 7px;">
                                     <div>
                                         <i
                                             class="fas fa-phone-alt phone-icon me-2"></i>
-                                        08007714455
+                                        {{ clinica.telefone }}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card mb-4"
-                        style="width: auto; max-width: fit-content;">
-                        <h6 class="card-header"
-                            style="background-color: #a5e1e1;">Policlinica</h6>
-                        <!-- Corrigido o fechamento da tag -->
-                        <div class="card-body">
-                            <div class="d-flex flex-column gap-3">
-                                <!-- Botão com cor personalizada para o endereço -->
-                                <button class="btn btn-custom me-2"
-                                    type="button">
-                                    <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Policlinica+-++Avenida+Guanabara%2C1641+Centro-Andradina"
-                                        style="color: inherit; text-decoration: none;"
-                                        target="_blank">
-                                        <i
-                                            class="fas fa-map-marker-alt me-2"></i>
-                                        Policlinica - Avenida Guanabara, 1641 -
-                                        Centro, Andradina - SP, CEP 16901-000
-                                    </a>
-                                </button>
-                                <div style="margin-left: 7px;">
-                                    <div>
-                                        <i
-                                            class="fas fa-phone-alt phone-icon me-2"></i>
-                                        (18) 99753-6347
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-4"
-                    style="width: auto; max-width: fit-content;">
-                    <h6 class="card-header"
-                        style="background-color: #a5e1e1;">Grupo PAF
-                        Castilho</h6>
-                    <div class="card-body">
-                        <div class="d-flex flex-column gap-3">
-                            <!-- Botão com cor personalizada para o endereço -->
-                            <button class="btn btn-custom me-2" type="button">
-                                <a
-                                    href="https://www.google.com/maps/search/?api=1&query=Grupo+PAF+Castilho+-+R.+Osório+Junqueira%2C444+Centro-Castilho"
-                                    style="color: inherit; text-decoration: none;"
-                                    target="_blank">
-                                    <i class="fas fa-map-marker-alt me-2"></i>
-                                    Grupo PAF Castilho - R. Osório Junqueira,
-                                    444 - Centro, Castilho - SP, CEP 16920-000
-                                </a>
-                            </button>
-                            <div style="margin-left: 7px;">
-                                <div>
-                                    <i
-                                        class="fas fa-phone-alt phone-icon me-2"></i>
-                                    (18) 99795-3086
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4"
-                    style="width: auto; max-width: fit-content;">
-                    <h6 class="card-header"
-                        style="background-color: #a5e1e1;">Hospital
-                        Auxiliadora</h6>
-                    <div class="card-body">
-                        <div class="d-flex flex-column gap-3">
-                            <!-- Botão com cor personalizada para o endereço -->
-                            <button class="btn btn-custom me-2" type="button">
-                                <a
-                                    href="https://www.google.com/maps/search/?api=1&query=Hospital+Auxiliadora+-+Avenida+Advogado+Rosário+Congro%2C1533+Centro-Três+Lagoas"
-                                    style="color: inherit; text-decoration: none;"
-                                    target="_blank">
-                                    <i class="fas fa-map-marker-alt me-2"></i>
-                                    Hospital Auxiliadora - Avenida Advogado
-                                    Rosário Congro, 1533 - Centro, Três Lagoas -
-                                    MS, CEP 79603-110
-                                </a>
-                            </button>
-                            <div style="margin-left: 7px;">
-                                <div>
-                                    <i
-                                        class="fas fa-phone-alt phone-icon me-2"></i>
-                                    (67) 2105-3500
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
+</div>

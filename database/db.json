@@ -58,7 +58,7 @@
       "endereco": "Av. Paulista, 1000",
       "email": "contato@clinicasaopaulo.com",
       "telefone": "11999999999",
-      "infos_ad": "Atendimento 24 horas"
+      "infos_ad": "https://www.medguias.com.br/sp/andradina/medicina/ortopedia-e-traumatologia/bruna-passarini"
     },
     {
       "id": "2",
@@ -68,7 +68,47 @@
       "endereco": "Rua das Flores, 200",
       "email": "contato@clinicacarioca.com",
       "telefone": "21988888888",
-      "infos_ad": "Especializada em cardiologia e dermatologia"
+      "infos_ad": "https://www.medguias.com.br/sp/andradina/medicina/ortopedia-e-traumatologia/bruna-passarini"
+    },
+    {
+      "id": "3",
+      "cidade": "Três Lagoas",
+      "estado": "MS",
+      "nome": "NUMED",
+      "endereco": "R. Bruno García, 2077 - Jardim Primaveril, Três Lagoas - MS, CEP 79603070 phone 08007714455  Agendar Consulta",
+      "email": "numedTeste@hotmail.com",
+      "telefone": "08007714455",
+      "infos_ad": "https://www.google.com/maps/search/?api=1&query=NUMED+-+R.+Bruno+García%2C2077+Jardim+Primaveril-Três+Lagoas"
+    },
+    {
+      "id": "4",
+      "cidade": "Andradina",
+      "estado": "SP",
+      "nome": "Policlinica",
+      "endereco": "Avenida Guanabara, 1641 - Centro, Andradina - SP, CEP 16901-000",
+      "email": "policlinicaTeste@outlook.com",
+      "telefone": "(18) 99753-6347",
+      "infos_ad": "https://www.google.com/maps/place/Policlínica/@-20.89496,-51.3756815,17z/data=!3m1!4b1!4m6!3m5!1s0x9490cb0040df7879:0xe9050db7b9f47b41!8m2!3d-20.89496!4d-51.3756815!16s%2Fg%2F11vm1mzb_h?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "id": "5",
+      "cidade": "Castilho",
+      "estado": "SP",
+      "nome": "Grupo PAF Castilho",
+      "endereco": "R. Osório Junqueira, 444 - Centro, Castilho - SP, CEP 16920-000",
+      "email": "grupoPafTeste@hotmail.com",
+      "telefone": "(18) 99795-3086",
+      "infos_ad": "https://www.google.com/maps/search/Grupo+PAF+Castilho+-+R.+Osório+Junqueira,444+Centro-Castilho/@-20.8642971,-51.4898376,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "id": "6",
+      "cidade": "Três Lagoas",
+      "estado": "MS",
+      "nome": "Hospital Auxiliadora",
+      "endereco": "Avenida Advogado Rosário Congro, 1533 - Centro, Três Lagoas - MS, CEP 79603-110",
+      "email": "hospAuxTeste@gmail.com",
+      "telefone": "(67) 2105-3500",
+      "infos_ad": "https://www.google.com/maps/search/?api=1&query=Hospital+Auxiliadora+-+Avenida+Advogado+Rosário+Congro%2C1533+Centro-Três+Lagoas"
     }
   ],
   "consultas": [
