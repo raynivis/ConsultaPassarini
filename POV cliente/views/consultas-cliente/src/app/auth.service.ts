@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
+import { SessionStorageService } from './session/session-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +10,22 @@ import { map, catchError, switchMap } from 'rxjs/operators';
 export class AuthService {
   private apiUrl = 'http://localhost:3000/pessoas';
 
-  constructor(private http: HttpClient) {}
+  // Injetando o SessionStorageService no construtor
+  constructor(private http: HttpClient, private sessionStorageService: SessionStorageService) {}
 
   // Método de login
   login(cpf: string, senha: string): Observable<boolean> {
     return this.http.get<any>(`${this.apiUrl}/${cpf}`).pipe(
       map(user => {
         if (user && user.senha === senha) {
-          // Armazena o CPF do usuário no sessionStorage
-          sessionStorage.setItem('loggedInCpf', cpf);  // Armazena apenas o CPF no sessionStorage
+          sessionStorage.setItem('loggedInCpf', cpf); // Armazena apenas o CPF
           return true;
         }
         return false;
       }),
       catchError(error => {
-        return throwError(() => new Error('Erro de autenticação: Usuário não encontrado.'));
+        console.error('Erro no login:', error);
+        return throwError(() => new Error('Usuário não encontrado ou erro no servidor.'));
       })
     );
   }
@@ -55,6 +57,6 @@ export class AuthService {
 
   // Faz logout, removendo o CPF do sessionStorage
   logout(): void {
-    sessionStorage.removeItem('loggedInCpf');
+    this.sessionStorageService.clearSessionStorage();  // Limpa todo o sessionStorage
   }
 }

@@ -1,32 +1,64 @@
 <app-header></app-header>
 
 <div class="container shadow p-3 mb-3 bg-white rounded">
-    <div class="row">
-        <h4 style="color:#3f9f9f">Olá {{ nomePaciente }}! Revise ou agende sua consulta</h4>
-        
-        <!-- Botão de logout -->
-        <div class="col-12 text-right">
-            <button (click)="logout()" class="btn btn-danger">Logout</button>
-        </div>
+  <div class="row">
+    <h4 style="color:#3f9f9f">Olá {{ nomePaciente }}, revise ou agende sua consulta!</h4>
 
-        <div class="col-12">
-            <div class="card mt-4">
-                <h5 class="card-header">Featured</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+    <div class="col-12">
+      <div class="card mt-4">
+        <h5 class="card-header" style="background-color: #a5e1e1">{{ consultaAgendada ? 'Consulta Agendada' : 'Consultas Disponíveis' }}</h5>
+        <div class="card-body">
+          <!-- Verifica se o paciente tem consulta agendada -->
+          <div *ngIf="consultaAgendada; else semConsulta">
+            <h5 class="card-title">Tipo de Consulta: {{ consultaAgendada?.tipo_consulta }}</h5>
+            <p class="card-text">
+              <strong>Preço:</strong> R$ {{ consultaAgendada?.preco }} <br>
+              <strong>Data da Consulta:</strong> {{ consultaAgendada?.data_consulta | date: 'dd/MM/yyyy HH:mm' }} <br>
+              <strong>Nome da Clínica:</strong> {{ nomeClinica }} <br>
+              <strong>Endereço da Clínica:</strong> {{ consultaAgendada?.id_clinica ? nomeClinica : '' }} 
+            </p>
+            
+            <!-- Botão de Desmarcar Consulta -->
+            <button (click)="confirmarDesmarcarConsulta()" class="btn btn-warning">Desmarcar Consulta</button>
+
+            <!-- Modal de Confirmação para desmarcar consulta -->
+            <div *ngIf="showConfirmModal" class="modal-overlay">
+              <div class="modal-content">
+                <h5>Tem certeza que deseja remover a consulta?</h5>
+                <button (click)="desmarcarConsulta()" class="btn btn-danger">Sim, desmarcar</button>
+                <button (click)="cancelarDesmarcarConsulta()" class="btn btn-secondary">Cancelar</button>
+              </div>
             </div>
+          </div>
+
+          <!-- Caso o paciente não tenha consulta agendada, exibe as consultas disponíveis -->
+          <ng-template #semConsulta>
+            <div *ngIf="consultasDisponiveis.length > 0; else semConsultasDisponiveis">
+              <div *ngFor="let consulta of consultasDisponiveis" class="card mt-3">
+                <div class="card-body">
+                  <h5 class="card-title">Tipo de Consulta: {{ consulta?.tipo_consulta }}</h5>
+                  <p class="card-text">
+                    <strong>Preço:</strong> R$ {{ consulta?.preco }} <br>
+                    <strong>Data:</strong> {{ consulta?.data_consulta | date: 'dd/MM/yyyy HH:mm' }} <br>
+                    <strong>Nome da Clínica:</strong> {{ nomeClinica }} <br>
+                    <strong>Endereço da Clínica:</strong> {{ consultaAgendada?.id_clinica ? nomeClinica : '' }}
+                  </p>
+                  <!-- Botão de agendar consulta -->
+                  <button (click)="agendarConsulta(consulta)" class="btn btn-success">Agendar</button>
+                </div>
+              </div>
+            </div>
+            <ng-template #semConsultasDisponiveis>
+              <p>Não há consultas disponíveis.</p>
+            </ng-template>
+          </ng-template>
         </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Botão de logout -->
+  <div class="col-12 text-right mt-3">
+    <button (click)="logout()" class="btn btn-danger">Sair</button>
+  </div>
 </div>
-
-<div class="container">
-  <h4>Bem-vindo {{ nomePaciente }}! Revise ou agende sua consulta</h4>
-
-  <button (click)="logout()">Logout</button>
-
-  <!-- Conteúdo da página agendar -->
-</div>
-

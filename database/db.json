@@ -37,6 +37,25 @@
       "cidade": "Rio de Janeiro",
       "estado": "RJ",
       "img": ""
+    },
+    {
+      "id": "99999999999",
+      "senha": "senha1234",
+      "nome": "Ray Marques Cortez",
+      "sexo": "Feminino",
+      "dataNasc": "2000-01-01T00:00:00",
+      "raca_cor": "Branco",
+      "celular": "999999990",
+      "nome_mae": "Maria Silva",
+      "nome_pai": "José Silva",
+      "genero": "Feminino",
+      "orientacao_sexual": "Bissexual",
+      "logradouro": "Rua Exemplo",
+      "numero": 123,
+      "bairro": "Centro",
+      "cidade": "Castilho",
+      "estado": "SP",
+      "img": ""
     }
   ],
   "doutora": [
@@ -112,15 +131,6 @@
     }
   ],
   "consultas": [
-    {
-      "id": "1",
-      "tipo_consulta": "Primeira Consulta",
-      "preco": 210,
-      "data_consulta": "2024-11-10T09:30",
-      "cpf_paciente": "12345678900",
-      "id_clinica": 1,
-      "relatorio": "http://localhost:3001/uploads/file-1731279363967-993499080.jpg"
-    },
     {
       "id": "2",
       "tipo_consulta": "Dermatologia",
