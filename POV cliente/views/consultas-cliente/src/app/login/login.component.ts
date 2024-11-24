@@ -23,7 +23,7 @@ export class LoginComponent {
     this.authService.login(this.cpf, this.senha).subscribe(success => {
       if (success) {
         alert('Login bem-sucedido!');
-        this.router.navigate(['/home']);
+        this.router.navigate(['/agendar']);
       } else {
         alert('CPF ou senha incorretos');
       }
