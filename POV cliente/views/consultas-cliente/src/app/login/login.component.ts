@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { ClinicaService } from '../../../../../../POV administrador/views/consultas-adm/services/clinica.service'; 
+import { ClinicaService } from '../../../../../../POV administrador/views/consultas-adm/services/clinica.service';
 import { ConsultaService } from '../../../../../../POV administrador/views/consultas-adm/services/consulta.service'; // Importe o serviço de clinica
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HttpClientModule, FormsModule], // Importar o HttpClientModule aqui
+  imports: [HttpClientModule, FormsModule, HeaderComponent], // Importar o HttpClientModule aqui
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   providers: [AuthService] // Adicione o AuthService como provider, caso ainda não esteja
@@ -31,7 +32,7 @@ export class LoginComponent {
 
         // Obtenha a consulta agendada do paciente
         this.authService.getLoggedInCpf();  // Recupere o CPF do paciente logado
-        
+
         this.router.navigate(['/agendar']);
       } else {
         alert('CPF ou senha incorretos');
@@ -40,5 +41,5 @@ export class LoginComponent {
   }
 
   // Função que busca a consulta agendada do paciente
-  
+
 }

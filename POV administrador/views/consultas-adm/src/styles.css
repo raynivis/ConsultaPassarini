@@ -28,9 +28,12 @@ li .text-palette:hover{
     font-size: 16px;
     font-weight: bold;
   }
-  
+
   /* Oculta o input real */
   input[type="file"] {
     display: none;
   }
-  
+
+.clicavel {
+    cursor: pointer; /* Define o cursor como clicável */
+}

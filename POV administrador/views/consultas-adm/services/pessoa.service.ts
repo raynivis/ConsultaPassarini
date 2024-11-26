@@ -18,6 +18,10 @@ export class PessoaService {
     return this.http.get<Pessoa[]>(this.apiUrl);
   }
 
+  updatePessoa(pessoa: any) : Observable<Pessoa>{
+    return this.http.put<Pessoa>(`${this.apiUrl}/${pessoa.id}`, pessoa);
+  }
+
   // Método para obter o nome do paciente pelo CPF
   getNome(cpf: string): Observable<string> {
     return this.http.get<Pessoa>(`${this.apiUrl}/${cpf}`).pipe(
@@ -29,6 +33,6 @@ export class PessoaService {
         console.error('Erro ao buscar nome:', error);
         return throwError(() => new Error('Erro ao buscar o nome.'));
       })
-    );  
+    );
   }
 }

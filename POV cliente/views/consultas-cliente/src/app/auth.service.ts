@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { SessionStorageService } from './session/session-storage.service';
+import { Pessoa } from '../../../../../database/Models/Pessoa';
 
 @Injectable({
   providedIn: 'root'
@@ -32,17 +33,7 @@ export class AuthService {
 
   // Método para registrar um usuário
   register(user: any): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${user.cpf}`).pipe(
-      switchMap(existingUser => {
-        if (existingUser) {
-          return throwError(() => new Error('CPF já cadastrado'));
-        }
-        return this.http.post<any>(this.apiUrl, user);  // Registra o novo usuário
-      }),
-      catchError(error => {
-        return throwError(() => new Error(error.message || 'Erro ao cadastrar'));
-      })
-    );
+    return this.http.post<any>(this.apiUrl, user);  // Registra o novo usuário
   }
 
   // Verifica se o usuário está logado
