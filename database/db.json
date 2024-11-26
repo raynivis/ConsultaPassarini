@@ -56,6 +56,25 @@
       "cidade": "Castilho",
       "estado": "SP",
       "img": ""
+    },
+    {
+      "id": "555555",
+      "senha": "123",
+      "nome": "ray",
+      "sexo": "?",
+      "dataNasc": "?",
+      "raca_cor": "?",
+      "celular": "18991334574",
+      "nome_mae": "?",
+      "nome_pai": "?",
+      "genero": "?",
+      "orientacao_sexual": "?",
+      "logradouro": "?",
+      "numero": 0,
+      "bairro": "?",
+      "cidade": "castilho",
+      "estado": "?",
+      "img": "http://localhost:3001/uploads/file-1732652227150-147176898.png"
     }
   ],
   "doutora": [
@@ -77,7 +96,8 @@
       "endereco": "Av. Paulista, 1000",
       "email": "contato@clinicasaopaulo.com",
       "telefone": "11999999999",
-      "infos_ad": "https://www.medguias.com.br/sp/andradina/medicina/ortopedia-e-traumatologia/bruna-passarini"
+      "infos_ad": "https://www.medguias.com.br/sp/andradina/medicina/ortopedia-e-traumatologia/bruna-passarini",
+      "ativa": "não"
     },
     {
       "id": "2",
@@ -87,7 +107,8 @@
       "endereco": "Rua das Flores, 200",
       "email": "contato@clinicacarioca.com",
       "telefone": "21988888888",
-      "infos_ad": "https://www.medguias.com.br/sp/andradina/medicina/ortopedia-e-traumatologia/bruna-passarini"
+      "infos_ad": "https://www.medguias.com.br/sp/andradina/medicina/ortopedia-e-traumatologia/bruna-passarini",
+      "ativa": "não"
     },
     {
       "id": "3",
@@ -97,7 +118,8 @@
       "endereco": "R. Bruno García, 2077 - Jardim Primaveril, Três Lagoas - MS, CEP 79603070",
       "email": "numedTeste@hotmail.com",
       "telefone": "08007714455",
-      "infos_ad": "https://www.google.com/maps/search/?api=1&query=NUMED+-+R.+Bruno+García%2C2077+Jardim+Primaveril-Três+Lagoas"
+      "infos_ad": "https://www.google.com/maps/search/?api=1&query=NUMED+-+R.+Bruno+García%2C2077+Jardim+Primaveril-Três+Lagoas",
+      "ativa": "sim"
     },
     {
       "id": "4",
@@ -107,7 +129,8 @@
       "endereco": "Avenida Guanabara, 1641 - Centro, Andradina - SP, CEP 16901-000",
       "email": "policlinicaTeste@outlook.com",
       "telefone": "(18) 99753-6347",
-      "infos_ad": "https://www.google.com/maps/place/Policlínica/@-20.89496,-51.3756815,17z/data=!3m1!4b1!4m6!3m5!1s0x9490cb0040df7879:0xe9050db7b9f47b41!8m2!3d-20.89496!4d-51.3756815!16s%2Fg%2F11vm1mzb_h?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D"
+      "infos_ad": "https://www.google.com/maps/place/Policlínica/@-20.89496,-51.3756815,17z/data=!3m1!4b1!4m6!3m5!1s0x9490cb0040df7879:0xe9050db7b9f47b41!8m2!3d-20.89496!4d-51.3756815!16s%2Fg%2F11vm1mzb_h?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D",
+      "ativa": "sim"
     },
     {
       "id": "5",
@@ -117,7 +140,8 @@
       "endereco": "R. Osório Junqueira, 444 - Centro, Castilho - SP, CEP 16920-000",
       "email": "grupoPafTeste@hotmail.com",
       "telefone": "(18) 99795-3086",
-      "infos_ad": "https://www.google.com/maps/search/Grupo+PAF+Castilho+-+R.+Osório+Junqueira,444+Centro-Castilho/@-20.8642971,-51.4898376,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D"
+      "infos_ad": "https://www.google.com/maps/search/Grupo+PAF+Castilho+-+R.+Osório+Junqueira,444+Centro-Castilho/@-20.8642971,-51.4898376,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D",
+      "ativa": "sim"
     },
     {
       "id": "6",
@@ -127,35 +151,18 @@
       "endereco": "Avenida Advogado Rosário Congro, 1533 - Centro, Três Lagoas - MS, CEP 79603-110",
       "email": "hospAuxTeste@gmail.com",
       "telefone": "(67) 2105-3500",
-      "infos_ad": "https://www.google.com/maps/search/?api=1&query=Hospital+Auxiliadora+-+Avenida+Advogado+Rosário+Congro%2C1533+Centro-Três+Lagoas"
+      "infos_ad": "https://www.google.com/maps/search/?api=1&query=Hospital+Auxiliadora+-+Avenida+Advogado+Rosário+Congro%2C1533+Centro-Três+Lagoas",
+      "ativa": "sim"
     }
   ],
   "consultas": [
     {
-      "id": "2",
-      "tipo_consulta": "Dermatologia",
-      "preco": 150,
-      "data_consulta": "2024-10-16T14:00:00",
-      "cpf_paciente": "12345678900",
-      "id_clinica": "2",
-      "relatorio": "http://localhost:3001/uploads/file-1731367263168-236707086.webp"
-    },
-    {
       "id": "3",
       "tipo_consulta": "Tratamento de Traumas",
       "preco": 122,
-      "data_consulta": "2024-11-30T09:00",
+      "data_consulta": "2024-11-26T15:40",
       "cpf_paciente": "",
       "id_clinica": "3",
-      "relatorio": ""
-    },
-    {
-      "id": "4",
-      "tipo_consulta": "Tratamento de Traumas",
-      "preco": 122,
-      "data_consulta": "2024-11-30T08:00",
-      "cpf_paciente": "99999999999",
-      "id_clinica": "1",
       "relatorio": ""
     },
     {
@@ -163,7 +170,7 @@
       "tipo_consulta": "Normal",
       "preco": 122,
       "data_consulta": "2024-12-12T10:20",
-      "cpf_paciente": "",
+      "cpf_paciente": "523.291.398-02",
       "id_clinica": "2",
       "relatorio": ""
     }

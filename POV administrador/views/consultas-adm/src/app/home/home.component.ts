@@ -97,8 +97,8 @@ export class HomeComponent implements OnInit {
     }
     return null;
   }
-//Back-End de Arquivos (Tive que colocar aqui pq não entendi no Service)
-  onFileSelected(event: Event, consulta: Consulta) { 
+  //Back-End de Arquivos (Tive que colocar aqui pq não entendi no Service)
+  onFileSelected(event: Event, consulta: Consulta) {
     const input = event.target as HTMLInputElement;
     const file = input?.files?.[0];
     if (!file) {

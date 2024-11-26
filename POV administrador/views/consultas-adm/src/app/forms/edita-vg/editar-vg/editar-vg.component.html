@@ -48,12 +48,12 @@
 
                       <!-- data input -->
                       <div class="form-outline mb-4">
-                        <input #data type="datetime-local" id="form6Example6" class="form-control" />
+                        <input [disabled]="edit"  #data type="datetime-local" id="form6Example6" class="form-control" />
                         <label class="form-label" for="form6Example6">Data</label>
                       </div>
                       <!-- apagar input -->
                       <div class="form-outline mb-4">
-                        <select #apagar class="form-select" aria-label="Default select example" id="consulta"
+                        <select [disabled]="edit" #apagar class="form-select" aria-label="Default select example" id="consulta"
                           formControlName="tipoConsulta">
                           <option value="nao">Não</option>
                           <option value="sim">Sim</option>

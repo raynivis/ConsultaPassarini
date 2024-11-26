@@ -7,4 +7,5 @@ export interface Clinica {
     email: string;
     telefone: string;
     infos_ad: string;
+    ativa: string;
 }

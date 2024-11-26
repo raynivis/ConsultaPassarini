@@ -93,7 +93,8 @@ export class PerfilComponent implements OnInit {
       endereco: this.endereco,
       email: this.email,
       telefone: this.telefone,
-      infos_ad: this.informacoes
+      infos_ad: this.informacoes,
+      ativa: "sim"
     }
     this.clinicaService.addConsulta(nClinica).subscribe((nClinica) => {
       this.clinicas.push(nClinica);
