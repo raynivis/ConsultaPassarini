@@ -17,10 +17,6 @@ export class ConsultaService {
     return this.http.get<Consulta[]>(this.apiUrl);
   }
 
-  getConsultaPorCpf(cpf: string): Observable<Consulta[]> {
-    return this.http.get<Consulta[]>(`${this.apiUrl}?cpf=${cpf}`);
-  }
-
   // Método para buscar consultas com cpf_paciente vazio ou nulo
   getConsultasSemCpf(): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(this.apiUrl).pipe(
@@ -31,16 +27,10 @@ export class ConsultaService {
     );
   }
 
-   // Método para agendar consulta
-   agendarConsulta(consulta: Consulta): Observable<Consulta> {
-    return this.http.put<Consulta>(`${this.apiUrl}/${consulta.id}`, consulta); // Supondo que a consulta tenha um id
+  atualizarConsulta(consulta: Consulta): Observable<Consulta> {
+    return this.http.put<Consulta>(`${this.apiUrl}/${consulta.id}`, consulta);
   }
-
-   // Método para remover o CPF de uma consulta/ desmarcar uma consulta
-   removerCpfConsulta(consultaId: string): Observable<Consulta> {
-    return this.http.put<Consulta>(`${this.apiUrl}/remover-cpf/${consultaId}`, {}); // Envia a requisição PUT
-  }
-
+  
   addConsulta(consulta: Consulta) : Observable<Consulta>{
     return this.http.post<Consulta>(this.apiUrl, consulta);  
   }

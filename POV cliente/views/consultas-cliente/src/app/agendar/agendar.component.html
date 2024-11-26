@@ -2,52 +2,80 @@
 
 <div class="container shadow p-3 mb-3 bg-white rounded">
   <div class="row">
-    <h4 style="color:#3f9f9f">Olá {{ nomePaciente }}, revise ou agende sua consulta!</h4>
+    <h4 style="color:#3f9f9f">Olá {{ nomePaciente }}, revise ou agende sua
+      consulta!</h4>
 
     <div class="col-12">
       <div class="card mt-4">
-        <h5 class="card-header" style="background-color: #a5e1e1">{{ consultaAgendada ? 'Consulta Agendada' : 'Consultas Disponíveis' }}</h5>
+        <h5 class="card-header" style="background-color: #a5e1e1">
+          {{ consultaAgendada ? 'Consulta Agendada' : 'Consultas Disponíveis' }}
+        </h5>
         <div class="card-body">
           <!-- Verifica se o paciente tem consulta agendada -->
           <div *ngIf="consultaAgendada; else semConsulta">
-            <h5 class="card-title">Tipo de Consulta: {{ consultaAgendada?.tipo_consulta }}</h5>
+            <h5 class="card-title">Tipo de Consulta: </h5>
             <p class="card-text">
-              <strong>Preço:</strong> R$ {{ consultaAgendada?.preco }} <br>
-              <strong>Data da Consulta:</strong> {{ consultaAgendada?.data_consulta | date: 'dd/MM/yyyy HH:mm' }} <br>
-              <strong>Nome da Clínica:</strong> {{ nomeClinica }} <br>
-              <strong>Endereço da Clínica:</strong> {{ consultaAgendada?.id_clinica ? nomeClinica : '' }} 
+              <strong>Preço:</strong> R$ {{ consultaAgendada.preco ||
+              'Não disponível'}}<br>
+              <strong>Data da Consulta:</strong> {{
+              consultaAgendada.data_consulta | date: 'dd/MM/yyyy HH:mm' ||
+              'Não disponível' }}<br>
+              <strong>Nome da Clínica: </strong>{{ buscarClinicaCpf()?.nome }}
+              <br>
+              <strong>Endereço da Clínica: </strong>{{
+              buscarClinicaCpf()?.endereco }}
             </p>
-            
             <!-- Botão de Desmarcar Consulta -->
-            <button (click)="confirmarDesmarcarConsulta()" class="btn btn-warning">Desmarcar Consulta</button>
+            <button (click)="confirmarDesmarcarConsulta()"
+              class="btn btn-warning btn-sm">Desmarcar Consulta</button>
 
             <!-- Modal de Confirmação para desmarcar consulta -->
             <div *ngIf="showConfirmModal" class="modal-overlay">
               <div class="modal-content">
                 <h5>Tem certeza que deseja remover a consulta?</h5>
-                <button (click)="desmarcarConsulta()" class="btn btn-danger">Sim, desmarcar</button>
-                <button (click)="cancelarDesmarcarConsulta()" class="btn btn-secondary">Cancelar</button>
+                <button (click)="desmarcarConsulta(consultaAgendada)"
+                  class="btn btn-danger btn-sm custom-btn">Sim,
+                  desmarcar</button>
+                <button (click)="cancelarDesmarcarConsulta()"
+                  class="btn btn-secondary btn-sm custom-btn">Cancelar</button>
               </div>
             </div>
           </div>
 
           <!-- Caso o paciente não tenha consulta agendada, exibe as consultas disponíveis -->
           <ng-template #semConsulta>
-            <div *ngIf="consultasDisponiveis.length > 0; else semConsultasDisponiveis">
-              <div *ngFor="let consulta of consultasDisponiveis" class="card mt-3">
-                <div class="card-body">
-                  <h5 class="card-title">Tipo de Consulta: {{ consulta?.tipo_consulta }}</h5>
-                  <p class="card-text">
-                    <strong>Preço:</strong> R$ {{ consulta?.preco }} <br>
-                    <strong>Data:</strong> {{ consulta?.data_consulta | date: 'dd/MM/yyyy HH:mm' }} <br>
-                    <strong>Nome da Clínica:</strong> {{ nomeClinica }} <br>
-                    <strong>Endereço da Clínica:</strong> {{ consultaAgendada?.id_clinica ? nomeClinica : '' }}
-                  </p>
-                  <!-- Botão de agendar consulta -->
-                  <button (click)="agendarConsulta(consulta)" class="btn btn-success">Agendar</button>
+            <div *ngIf="consultas.length > 0; else semConsultasDisponiveis">
+              <div *ngFor="let consulta of consultas" class="card mt-3">
+                <div
+                  *ngIf="!consulta.cpf_paciente || consulta.cpf_paciente === ''">
+                  <div class="card-body">
+                    <h5 class="card-title">Tipo de Consulta: {{
+                      consulta.tipo_consulta }}</h5>
+                    <ul>
+                      <li style="list-style-type: none;">
+                        <strong>Preço:</strong> R$ {{consulta.preco}}
+                      </li>
+                      <li style="list-style-type: none;">
+                        <strong>Data:</strong> {{ consulta.data_consulta | date:
+                        'dd/MM/yyyy HH:mm' }}
+                      </li>
+                      <li style="list-style-type: none;">
+                        <strong>Nome da Clínica:</strong> {{
+                        buscarClinica(consulta.id_clinica)?.nome }}
+                      </li>
+                      <li style="list-style-type: none;">
+                        <strong>Endereço da Clínica:</strong> {{
+                        buscarClinica(consulta.id_clinica)?.endereco }}
+                      </li>
+                    </ul>
+                    <button (click)="agendarConsulta(consulta)"
+                      class="btn btn-success btn-sm">Agendar</button>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <!-- Caso não haja consultas disponíveis -->
             <ng-template #semConsultasDisponiveis>
               <p>Não há consultas disponíveis.</p>
             </ng-template>
@@ -55,10 +83,10 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Botão de logout -->
-  <div class="col-12 text-right mt-3">
-    <button (click)="logout()" class="btn btn-danger">Sair</button>
+    <!-- Botão de logout -->
+    <div class="col-12 text-right mt-3">
+      <button (click)="logout()" class="btn btn-danger btn-sm">Sair</button>
+    </div>
   </div>
 </div>

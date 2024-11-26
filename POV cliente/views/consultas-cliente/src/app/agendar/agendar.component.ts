@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
 import { PessoaService } from '../../../../../../POV administrador/views/consultas-adm/services/pessoa.service';
 import { ClinicaService } from '../../../../../../POV administrador/views/consultas-adm/services/clinica.service';
-import { ConsultaService } from '../../../../../../POV administrador/views/consultas-adm/services/consulta.service'; // Importando o serviço de consultas
-import { NotificationService } from './notification.service'; // Serviço de notificações
+import { ConsultaService } from '../../../../../../POV administrador/views/consultas-adm/services/consulta.service';
+import { NotificationService } from './notification.service';
 import { Clinica } from '../../../../../../database/Models/Clinica';
-import { Consulta } from '../../../../../../database/Models/Consulta'; // Importando o modelo Consulta
+import { Consulta } from '../../../../../../database/Models/Consulta';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-agendar',
@@ -19,10 +20,12 @@ import { Consulta } from '../../../../../../database/Models/Consulta'; // Import
 })
 export class AgendarComponent implements OnInit {
   nomePaciente: string | null = '';
-  consultaAgendada: Consulta | null = null;  // Armazena a consulta agendada
-  consultasDisponiveis: Consulta[] = []; // Para armazenar as consultas com cpf nulo
-  nomeClinica: string | null = '';
-  showConfirmModal: boolean = false;  // Variável para controlar o modal de confirmação
+  showConfirmModal: boolean = false;
+  clinicas: Clinica[] = [];
+  cpf = '';
+  consultas: Consulta[] = [];
+  consultaAgendada: Consulta | null = null; // Consulta do paciente
+  consultaDesmarcar: Consulta | null = null;
 
   constructor(
     private authService: AuthService,
@@ -30,134 +33,129 @@ export class AgendarComponent implements OnInit {
     private consultaService: ConsultaService,
     private clinicaService: ClinicaService,
     private router: Router,
-    private notificationService: NotificationService // Injeta o serviço de notificação
-  ) {}
+    private notificationService: NotificationService,
+    private location: Location
+  ) { }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
 
   ngOnInit(): void {
+    this.clinicaService.getClinicas().subscribe(dado => { this.clinicas = dado; });
+    this.consultaService.getConsultas().subscribe(dado => { this.consultas = dado; });
+    this.consultaAgendada = null;  // Limpa a consulta antes de buscar novas informações
+
     const cpf = this.authService.getLoggedInCpf();
     if (cpf) {
-      // Busca as informações do paciente
       this.pessoaService.getNome(cpf).subscribe({
-        next: (nome) => this.nomePaciente = nome,
+        next: (nome) => {
+          this.nomePaciente = nome;
+          this.cpf = cpf;
+          this.consultaAgendada = this.buscarConsulta(cpf);
+        },
         error: (err) => {
           console.error('Erro ao buscar o nome do paciente:', err);
           this.notificationService.notify('Erro ao carregar informações do paciente.');
         },
       });
-
-      // Busca a consulta agendada para o paciente logado
-      this.consultaService.getConsultaPorCpf(cpf).subscribe({
-        next: (consultas) => {
-          this.consultaAgendada = consultas.find(consulta => consulta.cpf_paciente === cpf) || null; // Garante que consultaAgendada seja null se não encontrar
-          
-          if (this.consultaAgendada) {
-            // Se o paciente tiver consulta agendada, busca o nome da clínica
-            const clinicaId: string = this.consultaAgendada.id_clinica;
-            this.clinicaService.getClinicaNomeById(Number(clinicaId)).subscribe({
-              next: (nomeClinica) => {
-                this.nomeClinica = nomeClinica;
-              },
-              error: (err) => {
-                console.error('Erro ao buscar o nome da clínica:', err);
-                this.notificationService.notify('Erro ao carregar nome da clínica.');
-              }
-            });
-          } else {
-            // Se o paciente não tiver consulta agendada, busca as consultas com CPF nulo
-            this.consultaService.getConsultasSemCpf().subscribe({
-              next: (consultas) => this.consultasDisponiveis = consultas,
-              error: (err) => {
-                console.error('Erro ao buscar consultas disponíveis:', err);
-                this.notificationService.notify('Erro ao carregar consultas disponíveis.');
-              }
-            });
-          }
-        },
-        error: (err) => {
-          console.error('Erro ao buscar as consultas do paciente:', err);
-          this.notificationService.notify('Erro ao carregar consultas.');
-        },
-      });
     } else {
-      // Se o paciente não estiver logado, redireciona para login
+      alert('Você não está logado! Faça login ou cadastre-se para poder agendar e visualizar suas consultas!');
       this.router.navigate(['/login']);
     }
   }
 
+  // Função para buscar a clínica pelo ID
+  buscarClinica(idClinica: string): Clinica | null {
+    for (const clinica of this.clinicas) {
+      if (idClinica === clinica.id) {  // Corrigido para comparação correta (===)
+        return clinica;
+      }
+    }
+    return null;
+  }
+
+  buscarClinicaCpf(): Clinica | null {
+    const id_clinica = this.consultaAgendada?.id_clinica
+    for (const clinica of this.clinicas) {
+      if (id_clinica === clinica.id) {
+        return clinica;
+      }
+    }
+    return null;
+  }
+
+  // Função para buscar a consulta pelo CPF
+  buscarConsulta(cpf: string): Consulta | null {
+    for (const consulta of this.consultas) {
+      if (cpf === consulta.cpf_paciente) {  // Corrigido para comparação correta (===)
+        return consulta;
+      }
+    }
+    return null;
+  }
+
   confirmarDesmarcarConsulta(): void {
-    this.showConfirmModal = true;  // Exibe o modal de confirmação
+    this.showConfirmModal = true;
   }
 
   cancelarDesmarcarConsulta(): void {
-    this.showConfirmModal = false;  // Fecha o modal de confirmação
+    this.showConfirmModal = false;
   }
 
-  desmarcarConsulta(): void {
-    const cpfPaciente = this.authService.getLoggedInCpf();
-    if (cpfPaciente && this.consultaAgendada) {
-      // Passando o id da consulta para remover o CPF da consulta
-      this.consultaService.removerCpfConsulta(this.consultaAgendada.id).subscribe({
-        next: () => {
-          alert('CPF removido da consulta com sucesso!');
-          this.consultaAgendada = null;  // Remove a consulta da variável
-          this.showConfirmModal = false;  // Fecha o modal de confirmação
-          this.carregarConsultas();  // Recarrega as consultas disponíveis
-        },
-        error: (err: any) => {
-          console.error('Erro ao remover o CPF da consulta:', err);
-          alert('Erro ao remover o CPF da consulta.');
-        }
-      });
-    }
-  }
+ // Método para desmarcar a consulta
+ desmarcarConsulta(consulta: Consulta): void {
+  if (this.cpf) {
+    consulta.cpf_paciente = '';  // Atribui o CPF do paciente à consulta
 
+    // Chama o método do consultaService para agendar
+    this.consultaService.updateConsulta(consulta).subscribe({
+      next: (consultaAgendada) => {
+        this.consultaAgendada = consultaAgendada;
+        this.notificationService.notify('Consulta desmarcada com sucesso!');
+        console.log('Consulta desmarcada:', consultaAgendada);
+        this.reloadPage();
+      },
+      error: (err) => {
+        console.error('Erro ao agendar consulta:', err);
+        this.notificationService.notify('Erro ao agendar consulta.');
+      }
+    });
+  } else {
+    this.notificationService.notify('Erro: CPF do paciente não encontrado.');
+  }
+}
+
+
+  // Método para agendar consulta
   agendarConsulta(consulta: Consulta): void {
-    const cpfPaciente = this.authService.getLoggedInCpf();
-    if (cpfPaciente) {
-      // Atualiza a consulta para incluir o CPF do paciente
-      consulta.cpf_paciente = cpfPaciente; // Adicionando o CPF do paciente à consulta
+    if (this.cpf) {
+      consulta.cpf_paciente = this.cpf;  // Atribui o CPF do paciente à consulta
 
-      this.consultaService.agendarConsulta(consulta).subscribe({
-        next: () => {
-          alert('Consulta agendada com sucesso!');
-          this.carregarConsultas(); // Recarrega as consultas disponíveis após o agendamento
+      // Chama o método do consultaService para agendar
+      this.consultaService.updateConsulta(consulta).subscribe({
+        next: (consultaAgendada) => {
+          this.consultaAgendada = consultaAgendada;
+          this.notificationService.notify('Consulta agendada com sucesso!');
+          console.log('Consulta agendada:', consultaAgendada);
         },
         error: (err) => {
           console.error('Erro ao agendar consulta:', err);
-          alert('Erro ao agendar a consulta.');
+          this.notificationService.notify('Erro ao agendar consulta.');
         }
       });
+    } else {
+      this.notificationService.notify('Erro: CPF do paciente não encontrado.');
     }
   }
 
-  carregarConsultas(): void {
-    const cpfPaciente = this.authService.getLoggedInCpf();
-    if (cpfPaciente) {
-      this.consultaService.getConsultaPorCpf(cpfPaciente).subscribe({
-        next: (consultas) => {
-          this.consultaAgendada = consultas.find(consulta => consulta.cpf_paciente === cpfPaciente) || null;
-          if (!this.consultaAgendada) {
-            this.consultaService.getConsultasSemCpf().subscribe({
-              next: (consultasDisponiveis) => {
-                this.consultasDisponiveis = consultasDisponiveis;
-              },
-              error: (err) => {
-                console.error('Erro ao carregar consultas disponíveis:', err);
-              }
-            });
-          }
-        },
-        error: (err) => {
-          console.error('Erro ao carregar as consultas:', err);
-        }
-      });
-    }
-  }
-
-  // Método de logout
   logout(): void {
     this.authService.logout();
     this.notificationService.notify('Paciente saiu da conta, redirecionando para a página inicial...');
+    this.nomePaciente = null;      // Limpa o nome do paciente
+    this.cpf = '';                 // Limpa o CPF
+    this.consultaAgendada = null;  // Limpa a consulta agendada
+    this.consultas = [];           // Limpa a lista de consultas
     this.router.navigate(['/home']);
   }
 }
