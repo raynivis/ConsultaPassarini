@@ -37,6 +37,25 @@
       "cidade": "Rio de Janeiro",
       "estado": "RJ",
       "img": ""
+    },
+    {
+      "id": "99999999999",
+      "senha": "senha1234",
+      "nome": "Ray Marques Cortez",
+      "sexo": "Feminino",
+      "dataNasc": "2000-01-01T00:00:00",
+      "raca_cor": "Branco",
+      "celular": "999999990",
+      "nome_mae": "Maria Silva",
+      "nome_pai": "José Silva",
+      "genero": "Feminino",
+      "orientacao_sexual": "Bissexual",
+      "logradouro": "Rua Exemplo",
+      "numero": 123,
+      "bairro": "Centro",
+      "cidade": "Castilho",
+      "estado": "SP",
+      "img": ""
     }
   ],
   "doutora": [
@@ -75,7 +94,7 @@
       "cidade": "Três Lagoas",
       "estado": "MS",
       "nome": "NUMED",
-      "endereco": "R. Bruno García, 2077 - Jardim Primaveril, Três Lagoas - MS, CEP 79603070 phone 08007714455  Agendar Consulta",
+      "endereco": "R. Bruno García, 2077 - Jardim Primaveril, Três Lagoas - MS, CEP 79603070",
       "email": "numedTeste@hotmail.com",
       "telefone": "08007714455",
       "infos_ad": "https://www.google.com/maps/search/?api=1&query=NUMED+-+R.+Bruno+García%2C2077+Jardim+Primaveril-Três+Lagoas"
@@ -113,30 +132,21 @@
   ],
   "consultas": [
     {
-      "id": "1",
-      "tipo_consulta": "Primeira Consulta",
-      "preco": 210,
-      "data_consulta": "2024-11-10T09:30",
-      "cpf_paciente": "12345678900",
-      "id_clinica": 1,
-      "relatorio": "http://localhost:3001/uploads/file-1731279363967-993499080.jpg"
-    },
-    {
       "id": "2",
       "tipo_consulta": "Dermatologia",
       "preco": 150,
       "data_consulta": "2024-10-16T14:00:00",
-      "cpf_paciente": "98765432100",
-      "id_clinica": 2,
+      "cpf_paciente": "12345678900",
+      "id_clinica": "2",
       "relatorio": "http://localhost:3001/uploads/file-1731367263168-236707086.webp"
     },
     {
       "id": "3",
       "tipo_consulta": "Tratamento de Traumas",
-      "preco": 250,
-      "data_consulta": "2024-10-15T09:30",
+      "preco": 122,
+      "data_consulta": "2024-11-30T09:00",
       "cpf_paciente": "",
-      "id_clinica": 1,
+      "id_clinica": "3",
       "relatorio": ""
     },
     {
@@ -144,7 +154,7 @@
       "tipo_consulta": "Tratamento de Traumas",
       "preco": 122,
       "data_consulta": "2024-11-30T08:00",
-      "cpf_paciente": "",
+      "cpf_paciente": "99999999999",
       "id_clinica": "1",
       "relatorio": ""
     },
