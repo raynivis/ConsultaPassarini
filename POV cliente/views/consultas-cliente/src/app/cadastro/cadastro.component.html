@@ -28,14 +28,106 @@
             <div *ngIf="!user.sobrenome && formSubmitted" class="text-danger text-start w-100">Sobrenome é obrigatório.</div>
           </div>
           <div class="mb-3">
+            <label for="dataNasc" class="form-label text-start w-100" style="color: #005B5B;">Data de Nascimento*</label>
+            <input type="date" id="dataNasc" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.dataNasc" name="dataNasc" required>
+            <div *ngIf="!user.dataNasc && formSubmitted" class="text-danger text-start w-100">Data de nascimento é obrigatória.</div>
+          </div>          
+          <div class="mb-3">
             <label for="cpf" class="form-label text-start w-100" style="color: #005B5B;">CPF*</label>
             <input type="text" id="cpf" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.cpf" name="cpf" placeholder="000.000.000-00" required>
             <div *ngIf="!user.cpf && formSubmitted" class="text-danger text-start w-100">CPF é obrigatório.</div>
           </div>
           <div class="mb-3">
+            <label for="sexo" class="form-label text-start w-100" style="color: #005B5B;">Sexo</label>
+            <input type="text" id="sexo" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.sexo" name="sexo" placeholder="Feminino" required>
+            <div *ngIf="!user.sexo && formSubmitted" class="text-danger text-start w-100">Sexo é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="genero" class="form-label text-start w-100" style="color: #005B5B;">Gênero</label>
+            <input type="text" id="genero" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.genero" name="genero" placeholder="Masculino" required>
+            <div *ngIf="!user.genero && formSubmitted" class="text-danger text-start w-100">Gênero é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="orientacao_sexual" class="form-label text-start w-100" style="color: #005B5B;">Orientação Sexual</label>
+            <input type="text" id="orientacao_sexual" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.orientacao_sexual" name="orientacao_sexual" placeholder="Bissexual" required>
+            <div *ngIf="!user.orientacao_sexual && formSubmitted" class="text-danger text-start w-100">Orientação Sexual é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="raca_cor" class="form-label text-start w-100" style="color: #005B5B;">Cor/Raça</label>
+            <select id="raca_cor" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.raca_cor" name="raca_cor" required>
+              <option value="" disabled selected>Escolha uma opção</option>
+              <option value="Branca">Branca</option>
+              <option value="Negra">Negra</option>
+              <option value="Parda">Parda</option>
+              <option value="Indígena">Indígena</option>
+              <option value="Amarela">Amarela</option>
+              <option value="Outra">Outra</option>
+              <option value="Prefiro não informar">Prefiro não informar</option>
+            </select>
+            <div *ngIf="!user.raca_cor && formSubmitted" class="text-danger text-start w-100">Cor/Raça é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="nome_mae" class="form-label text-start w-100" style="color: #005B5B;">Nome da mãe</label>
+            <input type="text" id="nome_mae" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.nome_mae" name="nome_mae" placeholder="Maria Gonçalves" required>
+          </div>
+          <div class="mb-3">
+            <label for="nome_pai" class="form-label text-start w-100" style="color: #005B5B;">Nome do pai</label>
+            <input type="text" id="nome_pai" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.nome_pai" name="nome_pai" placeholder="João Silva" required>
+          </div>
+          <div class="mb-3">
             <label for="cidade" class="form-label text-start w-100" style="color: #005B5B;">Cidade</label>
             <input type="text" id="cidade" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.cidade" name="cidade" placeholder="Cidade">
+            <div *ngIf="!user.cidade && formSubmitted" class="text-danger text-start w-100">Cidade é obrigatório.</div>
           </div>
+          <div class="mb-3">
+            <label for="bairro" class="form-label text-start w-100" style="color: #005B5B;">Bairro</label>
+            <input type="text" id="bairro" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.bairro" name="bairro" placeholder="Bairro">
+            <div *ngIf="!user.bairro && formSubmitted" class="text-danger text-start w-100">Bairro é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="estado" class="form-label text-start w-100" style="color: #005B5B;">Estado</label>
+            <select id="estado" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.estado" name="estado" required>
+              <option value="" disabled selected>Escolha um estado</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+            <div *ngIf="!user.estado && formSubmitted" class="text-danger text-start w-100">Estado é obrigatório.</div>
+          </div>          
+          <div class="mb-3">
+            <label for="logadouro" class="form-label text-start w-100" style="color: #005B5B;">Logadouro</label>
+            <input type="text" id="logadouro" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.logadouro" name="logadouro" placeholder="Logadouro">
+            <div *ngIf="!user.logadouro && formSubmitted" class="text-danger text-start w-100">Logadouro é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="numero" class="form-label text-start w-100" style="color: #005B5B;">Numero</label>
+            <input type="number" id="numero" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.numero" name="numero" placeholder="333" required>
+            <div *ngIf="!user.numero && formSubmitted" class="text-danger text-start w-100">Numero é obrigatório.</div>
+          </div>          
           <div class="mb-3">
             <label for="telefone" class="form-label text-start w-100" style="color: #005B5B;">Telefone*</label>
             <input type="text" id="telefone" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.telefone" name="telefone" placeholder="(00) 00000-0000" required>

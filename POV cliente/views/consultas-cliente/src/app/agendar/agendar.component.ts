@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-agendar',
   standalone: true,
-  imports: [HeaderComponent, CommonModule],
+  imports: [HeaderComponent, CommonModule,],
   templateUrl: './agendar.component.html',
   styleUrls: ['./agendar.component.css'],
 })
@@ -95,59 +95,74 @@ export class AgendarComponent implements OnInit {
     return null;
   }
 
-  confirmarDesmarcarConsulta(): void {
-    this.showConfirmModal = true;
-  }
+  // Método para desmarcar a consulta
+  desmarcarConsulta(consulta: Consulta): void {
+    const clinica = this.buscarClinica(consulta.id_clinica)?.nome || "desconhecida";
+    const tipo =  this.consultaAgendada?.tipo_consulta;
 
-  cancelarDesmarcarConsulta(): void {
-    this.showConfirmModal = false;
-  }
+    // Exibe o diálogo de confirmação com opções OK e Cancel
+    const confirmacao = confirm(
+      `Você está prestes a DESMARCAR uma consulta para "${tipo}" na clínica "${clinica}". Deseja continuar?`
+    );
 
- // Método para desmarcar a consulta
- desmarcarConsulta(consulta: Consulta): void {
-  if (this.cpf) {
-    consulta.cpf_paciente = '';  // Atribui o CPF do paciente à consulta
+    if (confirmacao) {
 
-    // Chama o método do consultaService para agendar
-    this.consultaService.updateConsulta(consulta).subscribe({
-      next: (consultaAgendada) => {
-        this.consultaAgendada = consultaAgendada;
-        this.notificationService.notify('Consulta desmarcada com sucesso!');
-        console.log('Consulta desmarcada:', consultaAgendada);
-        this.reloadPage();
-      },
-      error: (err) => {
-        console.error('Erro ao agendar consulta:', err);
-        this.notificationService.notify('Erro ao agendar consulta.');
+      if (this.cpf) {
+        consulta.cpf_paciente = '';  // Atribui o CPF do paciente à consulta
+
+        // Chama o método do consultaService para agendar
+        this.consultaService.updateConsulta(consulta).subscribe({
+          next: (consultaAgendada) => {
+            this.consultaAgendada = consultaAgendada;
+            this.notificationService.notify('Consulta desmarcada com sucesso!');
+            console.log('Consulta desmarcada:', consultaAgendada);
+            this.reloadPage();
+          },
+          error: (err) => {
+            console.error('Erro ao agendar consulta:', err);
+            this.notificationService.notify('Erro ao agendar consulta.');
+          }
+        });
+      } else {
+        this.notificationService.notify('Erro: CPF do paciente não encontrado.');
       }
-    });
-  } else {
-    this.notificationService.notify('Erro: CPF do paciente não encontrado.');
+    }
   }
-}
 
 
   // Método para agendar consulta
   agendarConsulta(consulta: Consulta): void {
-    if (this.cpf) {
-      consulta.cpf_paciente = this.cpf;  // Atribui o CPF do paciente à consulta
+    const clinica = this.buscarClinica(consulta.id_clinica)?.nome || "desconhecida";
+    const tipo =  this.consultaAgendada?.tipo_consulta;
 
-      // Chama o método do consultaService para agendar
-      this.consultaService.updateConsulta(consulta).subscribe({
-        next: (consultaAgendada) => {
-          this.consultaAgendada = consultaAgendada;
-          this.notificationService.notify('Consulta agendada com sucesso!');
-          console.log('Consulta agendada:', consultaAgendada);
-        },
-        error: (err) => {
-          console.error('Erro ao agendar consulta:', err);
-          this.notificationService.notify('Erro ao agendar consulta.');
-        }
-      });
-    } else {
-      this.notificationService.notify('Erro: CPF do paciente não encontrado.');
+    // Exibe o diálogo de confirmação com opções OK e Cancel
+    const confirmacao = confirm(
+      `Você está prestes a AGENDAR uma consulta para "${tipo}" na clínica "${clinica}". Deseja continuar?`
+    );
+
+    if (confirmacao) {
+
+      if (this.cpf) {
+        consulta.cpf_paciente = this.cpf;  // Atribui o CPF do paciente à consulta
+
+        // Chama o método do consultaService para agendar
+        this.consultaService.updateConsulta(consulta).subscribe({
+          next: (consultaAgendada) => {
+            this.consultaAgendada = consultaAgendada;
+            this.notificationService.notify('Consulta agendada com sucesso!');
+            console.log('Consulta agendada:', consultaAgendada);
+          },
+          error: (err) => {
+            console.error('Erro ao agendar consulta:', err);
+            this.notificationService.notify('Erro ao agendar consulta.');
+          }
+        });
+      } else {
+        this.notificationService.notify('Erro: CPF do paciente não encontrado.');
+      }
     }
   }
+
 
   logout(): void {
     this.authService.logout();

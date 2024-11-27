@@ -6,6 +6,8 @@
       consulta!</h4>
 
     <div class="col-12">
+      {{ consultaAgendada ? 'Você possui uma consulta agendada.' :
+      'Você ainda não agendou uma consulta.' }}
       <div class="card mt-4">
         <h5 class="card-header" style="background-color: #a5e1e1">
           {{ consultaAgendada ? 'Consulta Agendada' : 'Consultas Disponíveis' }}
@@ -13,7 +15,7 @@
         <div class="card-body">
           <!-- Verifica se o paciente tem consulta agendada -->
           <div *ngIf="consultaAgendada; else semConsulta">
-            <h5 class="card-title">Tipo de Consulta: </h5>
+            <h5 class="card-title">Tipo de Consulta: {{ consultaAgendada.tipo_consulta }}</h5>
             <p class="card-text">
               <strong>Preço:</strong> R$ {{ consultaAgendada.preco ||
               'Não disponível'}}<br>
@@ -26,22 +28,9 @@
               buscarClinicaCpf()?.endereco }}
             </p>
             <!-- Botão de Desmarcar Consulta -->
-            <button (click)="confirmarDesmarcarConsulta()"
+            <button (click)="desmarcarConsulta(consultaAgendada)"
               class="btn btn-warning btn-sm">Desmarcar Consulta</button>
-
-            <!-- Modal de Confirmação para desmarcar consulta -->
-            <div *ngIf="showConfirmModal" class="modal-overlay">
-              <div class="modal-content">
-                <h5>Tem certeza que deseja remover a consulta?</h5>
-                <button (click)="desmarcarConsulta(consultaAgendada)"
-                  class="btn btn-danger btn-sm custom-btn">Sim,
-                  desmarcar</button>
-                <button (click)="cancelarDesmarcarConsulta()"
-                  class="btn btn-secondary btn-sm custom-btn">Cancelar</button>
-              </div>
-            </div>
           </div>
-
           <!-- Caso o paciente não tenha consulta agendada, exibe as consultas disponíveis -->
           <ng-template #semConsulta>
             <div *ngIf="consultas.length > 0; else semConsultasDisponiveis">
@@ -56,7 +45,8 @@
                         <strong>Preço:</strong> R$ {{consulta.preco}}
                       </li>
                       <li style="list-style-type: none;">
-                        <strong>Data:</strong> {{ consulta.data_consulta | date:
+                        <strong>Data:</strong> {{ consulta.data_consulta |
+                        date:
                         'dd/MM/yyyy HH:mm' }}
                       </li>
                       <li style="list-style-type: none;">
@@ -69,7 +59,9 @@
                       </li>
                     </ul>
                     <button (click)="agendarConsulta(consulta)"
-                      class="btn btn-success btn-sm">Agendar</button>
+                      class="btn btn-success btn-sm">
+                      Agendar Consulta
+                    </button>
                   </div>
                 </div>
               </div>

@@ -25,7 +25,18 @@ export class CadastroComponent implements OnInit {
     telefone: '',
     senha: '',
     img: '',
-    confirmaSenha: '' // Novo campo para confirmar a senha
+    confirmaSenha: '', // Novo campo para confirmar a senha
+    dataNasc: '',
+    sexo: '',
+    genero: '',
+    orientacao_sexual: '',
+    raca_cor: '',
+    nome_mae: '',
+    nome_pai: '',
+    bairro: '',
+    estado: '',
+    logadouro: '',
+    numero: 0
   };
   formSubmitted = false;
   fileUrl: string | null = null; //iniciando o file vazio
@@ -46,7 +57,11 @@ export class CadastroComponent implements OnInit {
     console.log(this.user);
 
     // Verifica se todos os campos obrigatórios estão preenchidos
-    if (!this.user.nome || !this.user.sobrenome || !this.user.cpf || !this.user.telefone || !this.user.senha || !this.user.confirmaSenha) {
+    if (!this.user.bairro || !this.user.cidade || !this.user.confirmaSenha || !this.user.cpf || !this.user.dataNasc
+      || !this.user.estado || !this.user.genero || !this.user.logadouro || !this.user.nome || !this.user.numero
+      || !this.user.orientacao_sexual || !this.user.raca_cor || !this.user.senha || !this.user.sexo || !this.user.sobrenome
+      || !this.user.telefone
+    ) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }
@@ -81,19 +96,19 @@ export class CadastroComponent implements OnInit {
             id: this.user.cpf, // CPF
             senha: this.user.senha,
             nome: this.user.nome,
-            sexo: '?',
-            dataNasc: '?', // "YYYY-MM-DDTHH:MM:SS" para datas ISO
-            raca_cor: "?",
+            sexo: this.user.sexo,
+            dataNasc: this.user.dataNasc, // "YYYY-MM-DDTHH:MM:SS" para datas ISO
+            raca_cor: this.user.raca_cor,
             celular: this.user.telefone,
-            nome_mae: "?",
-            nome_pai: "?",
-            genero: "?",
-            orientacao_sexual: "?",
-            logradouro: "?",
-            numero: 0,
-            bairro: "?",
+            nome_mae: this.user.nome_mae,
+            nome_pai: this.user.nome_pai,
+            genero: this.user.genero,
+            orientacao_sexual: this.user.orientacao_sexual,
+            logradouro: this.user.logadouro,
+            numero: this.user.numero,
+            bairro: this.user.bairro,
             cidade: this.user.cidade,
-            estado: "?",
+            estado: this.user.estado,
             img: this.user.img
           };
           this.authService.register(this.pessoa).subscribe(
