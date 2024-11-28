@@ -29,16 +29,17 @@ export class EditaVgComponent implements OnInit{
   consultasId: Consulta[] = [];
   consultasFiltradas: Consulta[] = []; // Lista filtrada com base na pesquisa
   data: string = ''; //string do filtro
+  idfile!: string;
 
   //chamando o back de arquivos e dados
   constructor(private http: HttpClient, private route: ActivatedRoute, private consutaService: ConsultaService, private pessoaService: PessoaService, private clinicaService: ClinicaService) {
   }
 
-  ngOnInit() { //recebendo os dados na lista ao iniciar 
+  ngOnInit() { //recebendo os dados na lista ao iniciar
     this.route.params.subscribe(params => {
-      this.id = params['id']; 
+      this.id = params['id'];
       this.pessoaService.getPessoas().subscribe(dado => { this.pacientes = dado; });
-      this.clinicaService.getClinicas().subscribe(dado => { this.clinicas = dado; }); 
+      this.clinicaService.getClinicas().subscribe(dado => { this.clinicas = dado; });
       //invertendo a lista para o mais recente primeiro, e filtrando para as consultas da clinica id
       this.consutaService.getConsultas().subscribe(dado => { this.consultas = dado.reverse(); this.clinicasConsultas(); });
     });
@@ -48,7 +49,7 @@ export class EditaVgComponent implements OnInit{
     for(const consulta of this.consultas) {
       if(consulta.id_clinica == this.id){
         this.consultasId.push(consulta);
-      }   
+      }
     }
   }
 
@@ -74,30 +75,44 @@ export class EditaVgComponent implements OnInit{
   filtrarConsultas(): void {
     // Verifica se há uma data selecionada no input
     const dataFiltro = this.data ? new Date(this.data) : null;
-  
+
     this.consultasFiltradas = this.consultas
       .filter((consulta) => {
         // Obtém a data da consulta e a formata para comparação
         const dataConsulta = new Date(consulta.data_consulta); // Supondo que `consulta.data` seja uma string ou Date
-        
+
         // Formata ambas as datas para o formato 'YYYY-MM-DD' para comparação
         const dataConsultaStr = dataConsulta.toISOString().split('T')[0];
         const dataFiltroStr = dataFiltro ? dataFiltro.toISOString().split('T')[0] : '';
-  
+
         // Retorna verdadeiro se a data da consulta for igual à data do filtro
         return dataFiltro && dataConsultaStr === dataFiltroStr;
       });
   }
 
-  // back end do arquivo dos relatorios
-  onFileSelected(event: Event, consulta: Consulta) {
+  buscarConsulta(id: string): Consulta | null { //buscar a Clinica para achar o Nome
+    for (const consulta of this.consultas) {
+      if (id == consulta.id) {
+        return consulta;
+      }
+    }
+    return null;
+  }
+
+  oi(id: string){
+    this.idfile = id;
+  }
+
+
+  //Back-End de Arquivos (Tive que colocar aqui pq não entendi no Service)
+  onFileSelected(event: Event) {
+    var consulta = this.buscarConsulta(this.idfile);
     const input = event.target as HTMLInputElement;
     const file = input?.files?.[0];
     if (!file) {
       console.log('Nenhum arquivo selecionado');
       return;
     }
-
 
     const formData = new FormData();
     formData.append('file', file);
@@ -107,12 +122,15 @@ export class EditaVgComponent implements OnInit{
         next: (response) => {
           this.fileUrl = `http://localhost:3001${response.filePath}`;
 
-          consulta.relatorio = this.fileUrl!;
-          this.consutaService.updateConsulta(consulta).subscribe();
+          consulta!.relatorio = this.fileUrl!;
+          this.consutaService.updateConsulta(consulta!).subscribe();
+          location.reload();
         },
         error: (error) => {
           console.error('Erro ao fazer upload:', error);
         }
       });
+
   }
+
 }

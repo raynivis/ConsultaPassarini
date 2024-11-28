@@ -95,7 +95,7 @@ export class CadastroComponent implements OnInit {
           this.pessoa = {
             id: this.user.cpf, // CPF
             senha: this.user.senha,
-            nome: this.user.nome,
+            nome: this.user.nome + ' ' + this.user.sobrenome,
             sexo: this.user.sexo,
             dataNasc: this.user.dataNasc, // "YYYY-MM-DDTHH:MM:SS" para datas ISO
             raca_cor: this.user.raca_cor,

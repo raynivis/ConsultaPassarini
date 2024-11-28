@@ -2,8 +2,27 @@
 
 <div class="container shadow p-3 mb-3 bg-white rounded">
   <div class="row">
-    <h4 style="color:#3f9f9f">Olá {{ nomePaciente }}, revise ou agende sua
-      consulta!</h4>
+    <div class="d-flex flex-fill">
+      <h4 style="color:#3f9f9f">Olá {{ nomePaciente }}, revise ou agende sua
+        consulta!</h4>
+
+      <div class="d-flex justify-content-end flex-fill ">
+        <button (click)="editarAparece()" routerLinkActive="router-link-active" class="opp-button card shadow m-1">
+          <div style="color: #87cc7f;">
+            <b>Editar meus Dados</b>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#76c56c">
+              <path
+                d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
+            </svg>
+
+          </div>
+
+        </button>
+      </div>
+
+
+    </div>
+
 
     <div class="col-12">
       {{ consultaAgendada ? 'Você possui uma consulta agendada.' :
@@ -19,24 +38,23 @@
             <p class="card-text">
               <strong>Preço:</strong> R$ {{ consultaAgendada.preco ||
               'Não disponível'}}<br>
+
               <strong>Data da Consulta:</strong> {{
-              consultaAgendada.data_consulta | date: 'dd/MM/yyyy HH:mm' ||
-              'Não disponível' }}<br>
+              consultaAgendada.data_consulta | date: 'dd/MM/yyyy HH:mm' }}<br>
               <strong>Nome da Clínica: </strong>{{ buscarClinicaCpf()?.nome }}
               <br>
               <strong>Endereço da Clínica: </strong>{{
               buscarClinicaCpf()?.endereco }}
             </p>
             <!-- Botão de Desmarcar Consulta -->
-            <button (click)="desmarcarConsulta(consultaAgendada)"
-              class="btn btn-warning btn-sm">Desmarcar Consulta</button>
+            <button (click)="desmarcarConsulta(consultaAgendada)" class="btn btn-warning btn-sm">Desmarcar
+              Consulta</button>
           </div>
           <!-- Caso o paciente não tenha consulta agendada, exibe as consultas disponíveis -->
           <ng-template #semConsulta>
             <div *ngIf="consultas.length > 0; else semConsultasDisponiveis">
               <div *ngFor="let consulta of consultas" class="card mt-3">
-                <div
-                  *ngIf="!consulta.cpf_paciente || consulta.cpf_paciente === ''">
+                <div *ngIf="!consulta.cpf_paciente || consulta.cpf_paciente === ''">
                   <div class="card-body">
                     <h5 class="card-title">Tipo de Consulta: {{
                       consulta.tipo_consulta }}</h5>
@@ -58,8 +76,7 @@
                         buscarClinica(consulta.id_clinica)?.endereco }}
                       </li>
                     </ul>
-                    <button (click)="agendarConsulta(consulta)"
-                      class="btn btn-success btn-sm">
+                    <button (click)="agendarConsulta(consulta)" class="btn btn-success btn-sm">
                       Agendar Consulta
                     </button>
                   </div>
@@ -81,4 +98,190 @@
       <button (click)="logout()" class="btn btn-danger btn-sm">Sair</button>
     </div>
   </div>
-</div>
+
+  @if (editar) {
+  <!-- Card de editar -->
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg custom-shadow" style="width: 24rem; background-color: #00A6A6; border-radius: 1rem;">
+      <div class="card-body text-center">
+        <div class="d-flex justify-content-end flex-fill">
+          <button (click)="editar = false" routerLinkActive="router-link-active" class="opp-button card shadow m-1"
+            style="background-color:  transparent; border: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#002859">
+              <path
+                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+          </button>
+        </div>
+
+        <h2 class="card-title mb-2" style="color: #002859;">Editar</h2>
+        <p class="card-text" style="color: #005B5B;">Paciente</p>
+
+        <form (ngSubmit)="onRegister()">
+          <div class="mb-3">
+            <label for="nome" class="form-label text-start w-100" style="color: #005B5B;">Nome</label>
+            <input type="text" id="nome" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.nome"
+              name="nome" placeholder="Nome" required>
+            <div *ngIf="!user.nome && formSubmitted" class="text-danger text-start w-100">Nome é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="dataNasc" class="form-label text-start w-100" style="color: #005B5B;">Data de
+              Nascimento</label>
+            <input disabled type="date" id="dataNasc" class="form-control" style="background-color: #3f9f9f;"
+              [(ngModel)]="user.dataNasc" name="dataNasc" required>
+            <div *ngIf="!user.dataNasc && formSubmitted" class="text-danger text-start w-100">Data de nascimento é
+              obrigatória.</div>
+          </div>
+          <div class="mb-3">
+            <label for="cpf" class="form-label text-start w-100" style="color: #005B5B;">CPF</label>
+            <input disabled type="text" id="cpf" class="form-control" style="background-color: #3f9f9f;"
+              [(ngModel)]="user.cpf" name="cpf" placeholder="000.000.000-00" required>
+            <div *ngIf="!user.cpf && formSubmitted" class="text-danger text-start w-100">CPF é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="sexo" class="form-label text-start w-100" style="color: #005B5B;">Sexo</label>
+            <input disabled type="text" id="sexo" class="form-control" style="background-color: #3f9f9f;"
+              [(ngModel)]="user.sexo" name="sexo" placeholder="Feminino" required>
+            <div *ngIf="!user.sexo && formSubmitted" class="text-danger text-start w-100">Sexo é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="genero" class="form-label text-start w-100" style="color: #005B5B;">Gênero</label>
+            <input type="text" id="genero" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.genero" name="genero" placeholder="Masculino" required>
+            <div *ngIf="!user.genero && formSubmitted" class="text-danger text-start w-100">Gênero é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="orientacao_sexual" class="form-label text-start w-100" style="color: #005B5B;">Orientação
+              Sexual</label>
+            <input type="text" id="orientacao_sexual" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.orientacao_sexual" name="orientacao_sexual" placeholder="Bissexual" required>
+            <div *ngIf="!user.orientacao_sexual && formSubmitted" class="text-danger text-start w-100">Orientação Sexual
+              é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="raca_cor" class="form-label text-start w-100" style="color: #005B5B;">Cor/Raça</label>
+            <select disabled id="raca_cor" class="form-control" style="background-color: #3f9f9f;"
+              [(ngModel)]="user.raca_cor" name="raca_cor" required>
+              <option value="" disabled selected>Escolha uma opção</option>
+              <option value="Branca">Branca</option>
+              <option value="Negra">Negra</option>
+              <option value="Parda">Parda</option>
+              <option value="Indígena">Indígena</option>
+              <option value="Amarela">Amarela</option>
+              <option value="Outra">Outra</option>
+              <option value="Prefiro não informar">Prefiro não informar</option>
+            </select>
+            <div *ngIf="!user.raca_cor && formSubmitted" class="text-danger text-start w-100">Cor/Raça é obrigatório.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nome_mae" class="form-label text-start w-100" style="color: #005B5B;">Nome da mãe</label>
+            <input type="text" id="nome_mae" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.nome_mae" name="nome_mae" placeholder="Maria Gonçalves" required>
+          </div>
+          <div class="mb-3">
+            <label for="nome_pai" class="form-label text-start w-100" style="color: #005B5B;">Nome do pai</label>
+            <input type="text" id="nome_pai" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.nome_pai" name="nome_pai" placeholder="João Silva" required>
+          </div>
+          <div class="mb-3">
+            <label for="cidade" class="form-label text-start w-100" style="color: #005B5B;">Cidade</label>
+            <input type="text" id="cidade" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.cidade" name="cidade" placeholder="Cidade">
+            <div *ngIf="!user.cidade && formSubmitted" class="text-danger text-start w-100">Cidade é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="bairro" class="form-label text-start w-100" style="color: #005B5B;">Bairro</label>
+            <input type="text" id="bairro" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.bairro" name="bairro" placeholder="Bairro">
+            <div *ngIf="!user.bairro && formSubmitted" class="text-danger text-start w-100">Bairro é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="estado" class="form-label text-start w-100" style="color: #005B5B;">Estado</label>
+            <select id="estado" class="form-control" style="background-color: #9ce2e2;" [(ngModel)]="user.estado"
+              name="estado" required>
+              <option value="" disabled selected>Escolha um estado</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+            <div *ngIf="!user.estado && formSubmitted" class="text-danger text-start w-100">Estado é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="logadouro" class="form-label text-start w-100" style="color: #005B5B;">Logadouro</label>
+            <input type="text" id="logadouro" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.logadouro" name="logadouro" placeholder="Logadouro">
+            <div *ngIf="!user.logadouro && formSubmitted" class="text-danger text-start w-100">Logadouro é obrigatório.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="numero" class="form-label text-start w-100" style="color: #005B5B;">Numero</label>
+            <input type="number" id="numero" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.numero" name="numero" placeholder="333" required>
+            <div *ngIf="!user.numero && formSubmitted" class="text-danger text-start w-100">Numero é obrigatório.</div>
+          </div>
+          <div class="mb-3">
+            <label for="telefone" class="form-label text-start w-100" style="color: #005B5B;">Telefone</label>
+            <input type="text" id="telefone" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.telefone" name="telefone" placeholder="(00) 00000-0000" required>
+            <div *ngIf="!user.telefone && formSubmitted" class="text-danger text-start w-100">Telefone é obrigatório.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label text-start w-100" style="color: #005B5B;">Senha</label>
+            <input type="password" id="senha" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.senha" name="senha" placeholder="************" required>
+            <div *ngIf="!user.senha && formSubmitted" class="text-danger text-start w-100">Senha é obrigatória.</div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmaSenha" class="form-label text-start w-100" style="color: #005B5B;">Confirme a
+              senha*</label>
+            <input type="password" id="confirmaSenha" class="form-control" style="background-color: #9ce2e2;"
+              [(ngModel)]="user.confirmaSenha" name="confirmaSenha" placeholder="************" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="foto" class="form-label text-start w-100" style="color: #005B5B;">
+              Insira uma imagem para se identificar!
+            </label>
+            <!-- Esconde o input original -->
+            <input (change)="onFileChange($event)" class="form-control d-none" id="foto" type="file"
+              accept=".jpg, .jpeg, .png">
+
+            <!-- Botão estilizado -->
+            <label for="foto" class="btn btn-sm" style="background-color: #9ce2e2;">
+              Escolher imagem
+            </label>
+
+          </div>
+          <button type="submit" class="btn btn-primary w-100"
+            style="background-color: #002859; border: none;">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  }
