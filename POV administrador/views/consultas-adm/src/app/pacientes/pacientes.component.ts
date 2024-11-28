@@ -45,6 +45,7 @@ export class PacientesComponent implements OnInit {
     estado: "",           // Estado vazio
     img: ""               // URL da imagem vazia
   };
+  idfile!: string
 
 
   constructor(private http: HttpClient, private pessoaService: PessoaService, private clinicaService: ClinicaService,
@@ -88,13 +89,29 @@ export class PacientesComponent implements OnInit {
         return nomeA.localeCompare(nomeB);
       });
   }
-  onFileSelected(event: Event, consulta: Consulta) { //Envio do Arquivo 
+  oi(id: string) {
+    this.idfile = id;
+  }
+  buscarConsulta(id: string): Consulta | null { //buscar a Clinica para achar o Nome
+    for (const consulta of this.consultas) {
+      if (id == consulta.id) {
+        return consulta;
+      }
+    }
+    return null;
+  }
+
+
+  //Back-End de Arquivos (Tive que colocar aqui pq não entendi no Service)
+  onFileSelected(event: Event) {
+    var consulta = this.buscarConsulta(this.idfile);
     const input = event.target as HTMLInputElement;
     const file = input?.files?.[0];
     if (!file) {
       console.log('Nenhum arquivo selecionado');
       return;
     }
+
     const formData = new FormData();
     formData.append('file', file);
 
@@ -103,13 +120,15 @@ export class PacientesComponent implements OnInit {
         next: (response) => {
           this.fileUrl = `http://localhost:3001${response.filePath}`;
 
-          consulta.relatorio = this.fileUrl!;
-          this.consutaService.updateConsulta(consulta).subscribe();
+          consulta!.relatorio = this.fileUrl!;
+          this.consutaService.updateConsulta(consulta!).subscribe();
+          location.reload();
         },
         error: (error) => {
           console.error('Erro ao fazer upload:', error);
         }
       });
+
   }
 
   openModal(paciente: Pessoa) { //Aparecimento do Modal

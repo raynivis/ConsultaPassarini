@@ -1,150 +1,129 @@
 <app-header></app-header>
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <div class="container shadow p-3 mb-3 bg-white rounded">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="profile-img">
-                <img
-                    src="https://www.medguias.com.br/storage/images/announcements/KSaRT7AlwraNbg1uum6ZAksx5zvWRH97c1IhfvdF.png"
-                    class="rounded-start img-fluid" alt="BRUNA FOTO" />
-            </div>
-            <div
-                class="social-links mt-3 text-center text-decoration-none me-3">
-                <i class="fas fa-heart"></i> Telemedicina
-            </div>
-            <div
-                class="social-links mt-3 text-center text-decoration-none me-3">
-                <i class="fas fa-globe"></i> Idiomas:
-                <img
-                    src="https://www.medguias.com.br/storage/images/languages/MEkpnVOv64vcWbMrht4wXIGtemMzhnqUbxRT8Hjd.png"
-                    alt="britanico"
-                    style="width: 23px; height: auto; margin-right: 5px;" />
-                <img
-                    src="https://www.medguias.com.br/storage/images/languages/LYxD2tEJCDK7ewH9gxvhsCj8pZU0mJ6ArAHDLk37.png"
-                    alt="pt-br"
-                    style="width: 23px; height: auto;" />
-            </div>
-            <div class="social-links mt-3 text-center">
-                <a
-                    href="https://api.whatsapp.com/send/?phone=551837021440&text=Olá%21+Encontrei+vocês+através+do+MedGuias.+Gostaria+de+agendar+um+atendimento+com+BRUNA+PASSARINI.&type=phone_number&app_absent=0"
-                    target="_blank" class="text-decoration-none me-3">
-                    <i class="fab fa-whatsapp fa-lg"></i> WhatsApp
-                </a>
-                <a href="https://www.instagram.com/dra_bruna_passarini/"
-                    target="_blank" class="text-decoration-none me-3">
-                    <i class="fab fa-instagram fa-lg"></i> Instagram
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-8">
-            <div class="profile-head">
-                <h3><strong>BRUNA PASSARINI</strong></h3>
-                <h4 style="color:#3f9f9f">Ortopedia e Traumatologia</h4>
-                <ul class="nav nav-underline" style="margin-top: 30px;"
-                    id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            [class.active]="activeTab === 'home'"
-                            (click)="ativar('home')" id="home-tab" role="tab"
-                            aria-controls="home" aria-selected="true">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            [class.active]="activeTab === 'clinics'"
-                            (click)="ativar('clinics')" id="clinics-tab"
-                            role="tab" aria-controls="clinics"
-                            aria-selected="false">Clínicas de atendimento</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="tab-content mt-4">
-                <div *ngIf="activeTab === 'home'" id="home" role="tabpanel"
-                    aria-labelledby="home-tab">
-                    <h6>Ortopedia e Traumatologia | Cirurgia do Joelho e Trauma
-                        Esportivo</h6>
-                    <p><strong>CRM-MS 14307 | RQE 8633 | TEOT 17799</strong></p>
-                    <h6>Formação:</h6>
-                    <ul>
-                        <li>Graduação médica na Universidade Nove de Julho</li>
-                        <li>Residência em Ortopedia e Traumatologia - Hospital
-                            IFOR (Rede D`Or)</li>
-                        <li>Especialização em Traumatologia Esportiva pela
-                            Faculdade de Medicina do ABC – FMABC</li>
-                        <li>Residência em Cirurgia do Joelho pelo Hospital IFOR
-                            e Escola Paulista de Medicina – EPM</li>
-                        <li>Membro do Comitê de Doenças Osteometabólicas da SBOT
-                            (ABOOM)</li>
-                        <li>Treinamento em Traumatologia - AO trauma Latin
-                            America</li>
-                    </ul>
-
-                    <h5>Patologias do Joelho:</h5>
-                    <ul>
-                        <li>Rompimento de Ligamentos (LCA e LCP)</li>
-                        <li>Luxação Patelar</li>
-                        <li>Artróse</li>
-                        <li>Tendinite Patelar</li>
-                        <li>Síndrome do Corredor</li>
-                        <li>Lesão no Menisco</li>
-                        <li>Infiltração de Joelho</li>
-                    </ul>
-
-                    <h5>Procedimentos:</h5>
-                    <ul>
-                        <li>Artroscopia</li>
-                        <li>Cirurgia de Menisco</li>
-                        <li>Reconstrução de Ligamentos</li>
-                        <li>Artroplastia</li>
-                        <li>Osteotomia</li>
-                        <li>Cirurgia da Patela</li>
-                    </ul>
-
-                    <h5>Traumas Esportivos:</h5>
-                    <p>Avaliação e orientação de lesões relacionadas com a
-                        prática de atividades físicas agudas ou crônicas, e
-                        prevenção destas lesões.</p>
-                </div>
-
-                <div *ngIf="activeTab === 'clinics'" id="clinics"
-                    role="tabpanel" aria-labelledby="clinics-tab">
-                    <!-- itera pelas clinicas cadastradas no perfil de administrador da doutora e adiciona no site dos clientes -->
-                    @for(clinica of clinicas; track $index) {
-                    <div class="card mb-4"
-                        style="width: auto; max-width: fit-content;">
-                        <h6 class="card-header"
-                            style="background-color: #a5e1e1;">{{ clinica.nome
-                            }}</h6>
-                        <div class="card-body">
-                            <div class="d-flex flex-column gap-3">
-                                <!-- Botão com cor personalizada para o endereço -->
-                                <button class="btn btn-custom me-2"
-                                    type="button">
-                                    <a
-                                        href="{{ clinica.infos_ad }}"
-                                        style="color: inherit; text-decoration: none;"
-                                        target="_blank">
-                                        <i
-                                            class="fas fa-map-marker-alt me-2"></i>
-                                        {{ clinica.endereco }}
-                                    </a>
-                                </button>
-                                <div style="margin-left: 7px;">
-                                    <div>
-                                        <i
-                                            class="fas fa-phone-alt phone-icon me-2"></i>
-                                        {{ clinica.telefone }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    }
-                </div>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <img src="https://www.medguias.com.br/storage/images/announcements/KSaRT7AlwraNbg1uum6ZAksx5zvWRH97c1IhfvdF.png"
+          class="rounded-start img-fluid" alt="BRUNA FOTO" />
+      </div>
+      <div class="social-links mt-3 text-center text-decoration-none me-3">
+        <i class="fas fa-heart"></i> Telemedicina
+      </div>
+      <div class="social-links mt-3 text-center text-decoration-none me-3">
+        <i class="fas fa-globe"></i> Idiomas:
+        <img src="https://www.medguias.com.br/storage/images/languages/MEkpnVOv64vcWbMrht4wXIGtemMzhnqUbxRT8Hjd.png"
+          alt="britanico" style="width: 23px; height: auto; margin-right: 5px;" />
+        <img src="https://www.medguias.com.br/storage/images/languages/LYxD2tEJCDK7ewH9gxvhsCj8pZU0mJ6ArAHDLk37.png"
+          alt="pt-br" style="width: 23px; height: auto;" />
+      </div>
+      <div class="social-links mt-3 text-center">
+        <a href="https://api.whatsapp.com/send/?phone=551837021440&text=Olá%21+Encontrei+vocês+através+do+MedGuias.+Gostaria+de+agendar+um+atendimento+com+BRUNA+PASSARINI.&type=phone_number&app_absent=0"
+          target="_blank" class="text-decoration-none me-3">
+          <i class="fab fa-whatsapp fa-lg"></i> WhatsApp
+        </a>
+        <a href="https://www.instagram.com/dra_bruna_passarini/" target="_blank" class="text-decoration-none me-3">
+          <i class="fab fa-instagram fa-lg"></i> Instagram
+        </a>
+      </div>
     </div>
+
+    <div class="col-md-8">
+      <div class="profile-head">
+        <h3><strong>BRUNA PASSARINI</strong></h3>
+        <h4 style="color:#3f9f9f">{{doutora.especializacoes}}</h4>
+        <ul class="nav nav-underline" style="margin-top: 30px;" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="activeTab === 'home'" (click)="ativar('home')" id="home-tab" role="tab"
+              aria-controls="home" aria-selected="true">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="activeTab === 'clinics'" (click)="ativar('clinics')" id="clinics-tab"
+              role="tab" aria-controls="clinics" aria-selected="false">Clínicas de atendimento</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-content mt-4">
+        <div *ngIf="activeTab === 'home'" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h6>Ortopedia e Traumatologia | Cirurgia do Joelho e Trauma
+            Esportivo</h6>
+          <p><strong>CRM-MS 14307 | RQE 8633 | TEOT 17799</strong></p>
+          <p>{{doutora.descricao}}</p>
+          <h6>Formação:</h6>
+          <ul>
+            <li>Graduação médica na Universidade Nove de Julho</li>
+            <li>Residência em Ortopedia e Traumatologia - Hospital
+              IFOR (Rede D`Or)</li>
+            <li>Especialização em Traumatologia Esportiva pela
+              Faculdade de Medicina do ABC – FMABC</li>
+            <li>Residência em Cirurgia do Joelho pelo Hospital IFOR
+              e Escola Paulista de Medicina – EPM</li>
+            <li>Membro do Comitê de Doenças Osteometabólicas da SBOT
+              (ABOOM)</li>
+            <li>Treinamento em Traumatologia - AO trauma Latin
+              America</li>
+          </ul>
+
+          <h5>Patologias do Joelho:</h5>
+          <ul>
+            <li>Rompimento de Ligamentos (LCA e LCP)</li>
+            <li>Luxação Patelar</li>
+            <li>Artróse</li>
+            <li>Tendinite Patelar</li>
+            <li>Síndrome do Corredor</li>
+            <li>Lesão no Menisco</li>
+            <li>Infiltração de Joelho</li>
+          </ul>
+
+          <h5>Procedimentos:</h5>
+          <ul>
+            <li>Artroscopia</li>
+            <li>Cirurgia de Menisco</li>
+            <li>Reconstrução de Ligamentos</li>
+            <li>Artroplastia</li>
+            <li>Osteotomia</li>
+            <li>Cirurgia da Patela</li>
+          </ul>
+
+          <h5>Traumas Esportivos:</h5>
+          <p>Avaliação e orientação de lesões relacionadas com a
+            prática de atividades físicas agudas ou crônicas, e
+            prevenção destas lesões.</p>
+        </div>
+
+        <div *ngIf="activeTab === 'clinics'" id="clinics" role="tabpanel" aria-labelledby="clinics-tab">
+          <!-- itera pelas clinicas cadastradas no perfil de administrador da doutora e adiciona no site dos clientes -->
+          @for(clinica of clinicas; track $index) {
+          @if (clinica.ativa == "sim") {
+          <div class="card mb-4" style="width: auto; max-width: fit-content;">
+            <h6 class="card-header" style="background-color: #a5e1e1;">{{ clinica.nome
+              }}</h6>
+            <div class="card-body">
+              <div class="d-flex flex-column gap-3">
+                <!-- Botão com cor personalizada para o endereço -->
+                <button class="btn btn-custom me-2" type="button">
+                  <a href="{{ clinica.infos_ad }}" style="color: inherit; text-decoration: none;" target="_blank">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    {{ clinica.endereco }}
+                  </a>
+                </button>
+                <div style="margin-left: 7px;">
+                  <div>
+                    <i class="fas fa-phone-alt phone-icon me-2"></i>
+                    {{ clinica.telefone }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          }
+
+          }
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

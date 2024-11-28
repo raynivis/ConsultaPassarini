@@ -1,0 +1,16 @@
+
+.opp-button {
+  background-color: #fdfeff;
+  border: none;
+  border-radius: 15%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.opp-button:hover {
+  transform: scale(1.1);
+}
+
+.opp-button svg {
+  transition: fill 0.3s ease;
+}
