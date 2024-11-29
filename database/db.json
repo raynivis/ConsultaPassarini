@@ -158,20 +158,11 @@
   "consultas": [
     {
       "id": "3",
-      "tipo_consulta": "Tratamento de Traumas",
-      "preco": 122,
-      "data_consulta": "2024-11-26T15:40",
-      "cpf_paciente": "1",
-      "id_clinica": "3",
-      "relatorio": ""
-    },
-    {
-      "id": "5",
       "tipo_consulta": "Normal",
-      "preco": 122,
-      "data_consulta": "2024-12-12T10:20",
+      "preco": 550,
+      "data_consulta": "2024-12-03T08:00",
       "cpf_paciente": "",
-      "id_clinica": "2",
+      "id_clinica": "3",
       "relatorio": ""
     },
     {

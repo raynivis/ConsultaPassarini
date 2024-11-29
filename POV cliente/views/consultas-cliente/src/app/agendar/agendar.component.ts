@@ -177,7 +177,7 @@ export class AgendarComponent implements OnInit {
   // Método para agendar consulta
   agendarConsulta(consulta: Consulta): void {
     const clinica = this.buscarClinica(consulta.id_clinica)?.nome || "desconhecida";
-    const tipo = this.consultaAgendada?.tipo_consulta;
+    const tipo = consulta?.tipo_consulta;
 
     // Exibe o diálogo de confirmação com opções OK e Cancel
     const confirmacao = confirm(
@@ -245,6 +245,8 @@ export class AgendarComponent implements OnInit {
     };
 
     this.editar = true;
+    const elemento = document.getElementById('editar');
+    elemento!.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   onRegister() {
